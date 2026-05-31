@@ -1,611 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Babajan Movlyanov — Grafik Tasarımcı | Antalya, Türkiye</title>
-  <meta name="description" content="Babajan Movlyanov — Grafik tasarımcı, iş yönetimi mezunu. Antalya Alanya Konaklı Klub Kastaliya Holiday Village Beach Hotel. Graphic Designer based in Antalya, Turkey." />
-  <meta name="keywords" content="Babajan Movlyanov, Grafik Tasarımcı Antalya, Graphic Designer Turkey, mov.bbcan, Klub Kastaliya, Alanya, photographer" />
-  <meta name="author" content="Babajan Movlyanov" />
-  <link rel="canonical" href="https://movbbcan-coder.github.io/babajan-movlyanov/" />
-  <meta property="og:title" content="Babajan Movlyanov — Grafik Tasarımcı | Antalya" />
-  <meta property="og:description" content="Grafik tasarımcı ve iş yönetimi mezunu. Antalya, Türkiye." />
-  <meta property="og:type" content="profile" />
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Babajan Movlyanov","jobTitle":"Graphic Designer","email":"movbbcan@gmail.com","telephone":["+905069872223","+971566733237"],"address":{"@type":"PostalAddress","addressLocality":"Alanya","addressRegion":"Antalya","addressCountry":"TR"},"worksFor":{"@type":"Organization","name":"Klub Kastaliya Holiday Village Beach Hotel"},"sameAs":["https://www.instagram.com/mov.bbcan"]}
-  </script>
-
-  <style>
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e2c06e;
-      --dark: #080808;
-      --dark2: #111;
-      --dark3: #181818;
-      --dark4: #222;
-      --text: #e8e8e8;
-      --muted: #777;
-      --border: #1e1e1e;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-    /* ── LOADER ── */
-    #loader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--dark);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
-    }
-    .ld-logo {
-      font-size: 3.5rem; font-weight: 900; letter-spacing: 8px;
-      color: transparent; -webkit-text-stroke: 1px var(--gold);
-      animation: ldFade 0.6s 0.1s both;
-    }
-    .ld-bar-wrap { width: 180px; height: 1px; background: var(--border); overflow: hidden; }
-    .ld-bar { height: 100%; width: 0; background: var(--gold); animation: ldBar 1.6s 0.3s cubic-bezier(.4,0,.2,1) forwards; }
-    .ld-pct { font-size: 0.7rem; letter-spacing: 3px; color: var(--muted); animation: ldPct 1.6s 0.3s both; }
-    @keyframes ldFade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
-    @keyframes ldBar { to{width:100%} }
-    @keyframes ldPct {
-      0%   { content: ''; }
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 40px;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.97) 0%, transparent 100%);
-    }
-    .nav-logo { font-size: 1rem; font-weight: 900; letter-spacing: 4px; color: var(--gold); }
-    .nav-right { display: flex; align-items: center; gap: 24px; }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--gold); }
-    .lang-toggle { display: flex; border: 1px solid #333; border-radius: 4px; overflow: hidden; }
-    .lang-btn { padding: 6px 14px; font-size: 0.72rem; font-weight: 700; background: transparent; color: var(--muted); border: none; cursor: pointer; transition: all 0.2s; }
-    .lang-btn.active { background: var(--gold); color: #000; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute; width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
-      top: 50%; left: 50%; transform: translate(-50%,-50%);
-      pointer-events: none;
-    }
-    /* grid lines */
-    .hero::before {
-      content: ''; position: absolute; inset: 0; opacity: 0.025;
-      background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
-      background-size: 72px 72px; pointer-events: none;
-    }
-    .hero-inner { position: relative; z-index: 1; }
-
-    /* Spinning ring photo */
-    .hero-photo-wrap {
-      width: 130px; height: 130px; border-radius: 50%;
-      margin: 0 auto 32px; position: relative;
-      animation: heroFade 0.8s 0.4s both;
-    }
-    .hero-photo-wrap::before {
-      content: ''; position: absolute; inset: -2px; border-radius: 50%;
-      background: conic-gradient(rgba(201,168,76,0.35) 0deg, transparent 140deg, rgba(201,168,76,0.2) 260deg, transparent 360deg);
-      animation: spin 9s linear infinite;
-    }
-    .hero-photo-wrap::after { content: ''; position: absolute; inset: 1px; border-radius: 50%; background: var(--dark); }
-    .hero-photo { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; }
-    @keyframes spin { to{transform:rotate(360deg)} }
-    @keyframes heroFade { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid rgba(201,168,76,0.3); padding: 7px 18px; border-radius: 40px;
-      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 28px; animation: heroFade 0.7s 0.2s both;
-    }
-    .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: #4caf50; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.4)} }
-
-    .hero-name {
-      font-size: clamp(2.8rem, 9vw, 6rem); font-weight: 900; letter-spacing: -2px; line-height: 0.95;
-      margin-bottom: 18px; animation: heroUp 0.9s 0.5s both;
-    }
-    .hero-name .gold { color: var(--gold); }
-    @keyframes heroUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
-
-    .hero-title {
-      font-size: 0.82rem; letter-spacing: 4px; text-transform: uppercase; color: var(--muted);
-      margin-bottom: 40px; min-height: 1.4em; animation: heroFade 0.7s 0.8s both;
-    }
-    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: heroFade 0.7s 1s both; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; border-radius: 4px; font-size: 0.8rem;
-      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-      text-decoration: none; border: none; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
-    }
-    .btn-gold { background: var(--gold); color: #000; }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(201,168,76,0.25); }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid #333; }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-    .scroll-hint {
-      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      animation: heroFade 0.7s 1.3s both;
-    }
-    .scroll-hint-line { width: 1px; height: 44px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: lineAnim 1.6s ease-in-out infinite; }
-    @keyframes lineAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
-    .scroll-hint span { font-size: 0.62rem; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
-
-    /* ── SCROLL REVEAL ── (CSS-only, no JS dependency) */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal-left.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ── SECTIONS ── */
-    .section-wrap { padding: 100px 40px; max-width: 1120px; margin: 0 auto; }
-    .section-sep { border: none; border-top: 1px solid var(--border); }
-    .section-label { font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .section-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; letter-spacing: -1px; line-height: 1; margin-bottom: 56px; }
-
-    /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
-    .about-text p { color: var(--muted); margin-bottom: 18px; font-size: 1rem; line-height: 1.85; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
-    .stat-box {
-      background: var(--dark); padding: 24px 20px;
-      border-bottom: 2px solid transparent; transition: border-color 0.3s;
-    }
-    .stat-box:hover { border-color: var(--gold); }
-    .stat-num { font-size: 2.6rem; font-weight: 900; color: var(--gold); line-height: 1; }
-    .stat-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-    .about-info { border: 1px solid var(--border); }
-    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 0.88rem; transition: background 0.2s; }
-    .info-row:last-child { border-bottom: none; }
-    .info-row:hover { background: var(--dark3); }
-    .info-key { color: var(--muted); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; }
-    .info-val { font-weight: 500; text-align: right; }
-
-    /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 20px; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,168,76,0.1) 100%); }
-    .tl-item { position: relative; padding-left: 32px; margin-bottom: 52px; }
-    .tl-dot {
-      position: absolute; left: -5px; top: 8px;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--dark); border: 2px solid var(--border);
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .tl-item:hover .tl-dot { border-color: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.3); }
-    .tl-dot.green { background: #4caf50; border-color: #4caf50; box-shadow: 0 0 10px rgba(76,175,80,0.4); }
-    .tl-period { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-    .tl-period.green { color: #4caf50; }
-    .tl-badge { display: inline-block; background: rgba(76,175,80,0.1); color: #4caf50; border: 1px solid rgba(76,175,80,0.25); font-size: 0.62rem; letter-spacing: 1px; padding: 2px 8px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
-    .tl-role { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
-    .tl-company { font-size: 0.82rem; color: var(--muted); margin-bottom: 10px; }
-    .tl-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.8; max-width: 600px; }
-
-    /* ── SKILLS ── */
-    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-    .skill-group-label { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
-    .skill-row { margin-bottom: 22px; }
-    .skill-meta { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; }
-    .skill-level { color: var(--muted); font-size: 0.72rem; }
-    .skill-track { height: 1px; background: var(--border); position: relative; overflow: hidden; }
-    .skill-fill {
-      position: absolute; top: 0; left: 0; height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      width: 0; transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
-    }
-
-    /* ── GALLERY ── */
-    .gallery-wrap { padding: 80px 0; overflow: hidden; }
-    .gallery-label { padding: 0 40px; font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
-    .gallery-track {
-      display: flex; gap: 14px; padding: 0 40px;
-      overflow-x: auto; scrollbar-width: none; cursor: grab;
-      -webkit-overflow-scrolling: touch;
-    }
-    .gallery-track::-webkit-scrollbar { display: none; }
-    .gallery-item { flex-shrink: 0; width: 280px; height: 360px; border-radius: 4px; overflow: hidden; }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: grayscale(30%) brightness(0.72) contrast(1.08) saturate(0.6);
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.04);
-      filter: grayscale(10%) brightness(0.85) contrast(1.05) saturate(0.75);
-    }
-
-    /* ── LANGUAGES ── */
-    .lang-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
-    .lang-card {
-      border: 1px solid var(--border); padding: 28px 16px; text-align: center;
-      position: relative; transition: border-color 0.3s;
-    }
-    .lang-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-    .lang-card:hover { border-color: rgba(201,168,76,0.3); }
-    .lang-card:hover::after { transform: scaleX(1); }
-    .lang-name-text { font-size: 0.95rem; font-weight: 800; margin-bottom: 6px; }
-    .lang-lvl { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-    .lang-dots { display: flex; gap: 5px; justify-content: center; margin-top: 14px; }
-    .l-dot { width: 6px; height: 6px; border-radius: 50%; }
-    .l-dot.on { background: var(--gold); }
-    .l-dot.off { background: var(--dark4); border: 1px solid var(--border); }
-
-    /* ── EDUCATION ── */
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .edu-card { border: 1px solid var(--border); padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s; }
-    .edu-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); transform: scaleY(0); transform-origin: top; transition: transform 0.4s; }
-    .edu-card:hover { border-color: rgba(201,168,76,0.2); }
-    .edu-card:hover::before { transform: scaleY(1); }
-    .edu-period { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .edu-deg { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
-    .edu-school { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; letter-spacing: 1px; }
-    .edu-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
-
-    /* ── CONTACT ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-    .contact-intro p { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-bottom: 28px; }
-    .contact-links { display: flex; flex-direction: column; gap: 10px; }
-    .c-link {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 18px; border: 1px solid var(--border);
-      text-decoration: none; color: var(--text);
-      transition: border-color 0.3s, transform 0.3s, background 0.3s;
-      position: relative;
-    }
-    .c-link::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgba(201,168,76,0.08); transition: width 0.3s; }
-    .c-link:hover { border-color: rgba(201,168,76,0.3); transform: translateX(5px); }
-    .c-link:hover::before { width: 3px; }
-    .c-icon { width: 38px; height: 38px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.3s; }
-    .c-link:hover .c-icon { border-color: var(--gold); }
-    .c-icon svg { width: 16px; height: 16px; }
-    .c-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-    .c-value { font-size: 0.9rem; font-weight: 600; margin-top: 2px; }
-
-    /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.75rem; letter-spacing: 1px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .section-wrap { padding: 72px 20px; }
-      .about-grid, .contact-grid, .skills-grid, .edu-grid { grid-template-columns: 1fr; gap: 36px; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
-      .lang-cards { grid-template-columns: 1fr 1fr; }
-      .gallery-item { width: 240px; height: 300px; }
-      footer { flex-direction: column; gap: 10px; padding: 20px; text-align: center; }
-      .scroll-hint { display: none; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>THE GHOST — Case File: Active</title>
+<meta name="description" content="Babajan Movlyanov — Detective Case File Portfolio. Alanya, Turkey."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet"/>
+<style>
+:root{--red:#c0392b;--red2:#e74c3c;--gold:#c9a84c;--paper:#f5f0e8;--paper2:#ede8dc;--dark:#0a0806;--ink:#1a1208;--muted:#6b5a3e}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Crimson Text',Georgia,serif;background:var(--dark);color:var(--paper);overflow-x:hidden;cursor:none}
+::selection{background:var(--red);color:#fff}
+img{display:block;max-width:100%}
+#cursor-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--red2);pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+#cursor-ring{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(192,57,43,.5);pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+body.cursor-hover #cursor-ring{width:48px;height:48px;border-color:var(--red2)}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--red2);z-index:9999;box-shadow:0 0 8px var(--red2)}
+#lang-panel{position:fixed;top:20px;right:20px;z-index:1000;display:flex;gap:6px}
+.lang-btn{padding:6px 14px;font-family:'Special Elite',cursive;font-size:.75rem;letter-spacing:2px;border:1px solid rgba(192,57,43,.4);background:rgba(10,8,6,.85);color:var(--muted);cursor:pointer;transition:all .25s;backdrop-filter:blur(4px)}
+.lang-btn.active{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 0 12px rgba(192,57,43,.4)}
+.lang-btn:hover:not(.active){color:var(--paper);border-color:var(--red2)}
+#grain{position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");background-size:200px;animation:grain .5s steps(1) infinite}
+@keyframes grain{0%{background-position:0 0}25%{background-position:-5% 10%}50%{background-position:15% -5%}75%{background-position:-10% 20%}100%{background-position:5% 0}}
+#lamp{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .4s ease,top .4s ease}
+.scene{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.scene-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-attachment:fixed;filter:brightness(.35) contrast(1.1);transition:filter .5s}
+.scene:hover .scene-bg{filter:brightness(.45)}
+.scene::before{content:'';position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 20% 50%,rgba(139,105,20,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(160,120,32,.1) 0%,transparent 40%)}
+.scene::after{content:'';position:absolute;inset:0;z-index:1;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='turbulence' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:300px;pointer-events:none}
+.scene-inner{position:relative;z-index:2;max-width:500px;width:90%;padding:20px}
+.polaroid-wrap{position:relative;cursor:pointer;transition:transform .4s cubic-bezier(.34,1.56,.64,1);will-change:transform}
+.polaroid-wrap:hover{transform:rotate(0deg) scale(1.05) !important}
+.polaroid{background:#fff;padding:10px 10px 30px;box-shadow:4px 6px 24px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.1)}
+.polaroid img{width:100%;height:260px;object-fit:cover;object-position:center top;filter:contrast(1.05) saturate(.9);transition:transform .5s}
+.polaroid-wrap:hover .polaroid img{transform:scale(1.03)}
+.polaroid-label{font-family:'Special Elite',cursive;font-size:.7rem;color:#555;text-align:center;padding-top:8px;letter-spacing:1px;line-height:1.3}
+.board-card{background:var(--paper2);box-shadow:3px 4px 16px rgba(0,0,0,.6),inset 0 0 0 1px rgba(139,105,20,.2);padding:22px 18px;position:relative}
+.board-card::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#c9a84c 30%,#8b6914 100%);box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.sticky{padding:12px 14px;font-family:'Special Elite',cursive;font-size:.8rem;line-height:1.6;box-shadow:2px 3px 10px rgba(0,0,0,.5);cursor:pointer;transition:transform .3s,box-shadow .3s}
+.sticky:hover{transform:rotate(0deg) scale(1.04) !important;box-shadow:4px 6px 16px rgba(0,0,0,.7)}
+.sticky-yellow{background:#f9e94e;color:#333}
+.sticky-white{background:#fff;color:#333;border:1px solid #ddd}
+.case-label{font-family:'Bebas Neue',cursive;letter-spacing:5px;font-size:.75rem;color:var(--red2);margin-bottom:5px;text-transform:uppercase}
+.case-title{font-family:'Bebas Neue',cursive;font-size:clamp(2.4rem,9vw,5rem);letter-spacing:3px;line-height:.92;color:var(--paper);text-shadow:2px 2px 0 rgba(0,0,0,.8)}
+.case-sub{font-family:'Special Elite',cursive;font-size:.85rem;color:var(--gold);letter-spacing:2px;margin-top:5px}
+.case-body{font-size:.95rem;line-height:1.85;color:rgba(245,240,232,.75);margin-top:12px}
+.divider{border:none;border-top:1px solid rgba(139,105,20,.3);margin:20px 0}
+.stamp{display:inline-block;border:3px solid currentColor;padding:5px 12px;font-family:'Bebas Neue',cursive;letter-spacing:3px;font-size:.95rem;text-transform:uppercase;line-height:1.1;text-align:center}
+.stamp-red{color:var(--red2);border-color:var(--red2)}
+.reveal{opacity:0;transform:translateY(48px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-rotate{opacity:0;transform:rotate(-8deg) scale(.85);transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.56,.64,1)}
+.reveal-rotate.visible{opacity:1;transform:rotate(-2deg) scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+#scene1 .scene-bg{background-image:url('scenes/scene1.jpg')}
+#scene2 .scene-bg{background-image:url('scenes/scene2.jpg')}
+#scene3 .scene-bg{background-image:url('scenes/scene3.jpg')}
+#scene4 .scene-bg{background-image:url('scenes/scene4.jpg')}
+#scene5 .scene-bg{background-image:url('scenes/scene5.jpg')}
+#scene6 .scene-bg{background-image:url('scenes/scene6.jpg')}
+#scene7 .scene-bg{background-image:url('scenes/scene7.jpg')}
+#scene8 .scene-bg{background-image:url('scenes/scene8.jpg')}
+.s1-layout{display:flex;flex-direction:column;gap:14px;max-width:380px;width:90%}
+.s1-top-secret{font-family:'Bebas Neue',cursive;font-size:1.8rem;letter-spacing:7px;color:var(--red2);text-align:center;border:4px solid var(--red2);padding:7px 18px;box-shadow:0 0 20px rgba(192,57,43,.3);animation:flicker 4s infinite;cursor:pointer;user-select:none}
+@keyframes flicker{0%,95%,100%{opacity:.85}96%,98%{opacity:.3}97%,99%{opacity:1}}
+.s1-card{background:var(--paper2);padding:16px;box-shadow:4px 6px 20px rgba(0,0,0,.8);border-left:4px solid var(--red2)}
+.s1-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed rgba(139,105,20,.3);font-size:.85rem}
+.s1-row:last-child{border-bottom:none}
+.s1-key{font-family:'Special Elite',cursive;color:var(--muted);font-size:.68rem;letter-spacing:1px;text-transform:uppercase}
+.s1-val{font-weight:600;color:var(--ink);font-family:'Special Elite',cursive}
+.s1-active{color:var(--red2) !important}
+.mind-grid{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.mind-item{display:flex;align-items:flex-start;gap:10px;background:rgba(10,8,6,.75);padding:9px 11px;border-left:2px solid var(--red2);backdrop-filter:blur(4px)}
+.mind-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.mind-text{font-family:'Special Elite',cursive;font-size:.75rem;color:var(--paper);line-height:1.5}
+.mind-text strong{color:var(--gold);display:block;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:1px}
+.travel-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(139,105,20,.3);margin-top:12px}
+.t-stat{background:rgba(10,8,6,.7);padding:12px;text-align:center}
+.t-num{font-family:'Bebas Neue',cursive;font-size:2rem;color:var(--red2);line-height:1}
+.t-lbl{font-family:'Special Elite',cursive;font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2px}
+.contact-notes{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.c-note{display:flex;align-items:center;gap:12px;padding:11px 13px;cursor:pointer;transition:transform .3s;border-left:3px solid transparent}
+.c-note:hover{transform:translateX(6px);border-left-color:var(--red2)}
+.c-icon{font-size:1.1rem;flex-shrink:0}
+.c-lbl{font-family:'Special Elite',cursive;font-size:.6rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.c-val{font-family:'Special Elite',cursive;font-size:.88rem;color:var(--ink);font-weight:600}
+.closed-stamp{font-family:'Bebas Neue',cursive;font-size:clamp(1rem,3.5vw,1.4rem);letter-spacing:3px;color:var(--red2);border:4px solid var(--red2);padding:7px 14px;display:inline-block;transform:rotate(-4deg);box-shadow:0 0 20px rgba(192,57,43,.25);margin-bottom:14px;animation:stampIn .5s .3s both}
+@keyframes stampIn{from{transform:rotate(-4deg) scale(1.8);opacity:0}to{transform:rotate(-4deg) scale(1);opacity:1}}
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;padding:8px 20px;font-family:'Special Elite',cursive;font-size:.78rem;letter-spacing:2px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:9999;box-shadow:0 4px 20px rgba(192,57,43,.4)}
+#toast.show{opacity:1}
+#lightbox{position:fixed;inset:0;z-index:99000;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center}
+#lightbox.open{display:flex}
+#lb-wrap{overflow:hidden;max-width:92vw;max-height:88vh;cursor:grab;position:relative}
+#lb-wrap.grabbing{cursor:grabbing}
+#lb-img{display:block;max-width:92vw;max-height:88vh;object-fit:contain;transform-origin:center;transition:transform .15s;user-select:none;-webkit-user-drag:none}
+#lb-close{position:fixed;top:18px;right:22px;font-family:'Bebas Neue',cursive;font-size:1.7rem;letter-spacing:2px;color:var(--red2);background:none;border:none;cursor:pointer;z-index:99001;transition:transform .2s}
+#lb-close:hover{transform:scale(1.2)}
+#lb-pct{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);font-family:'Special Elite',cursive;font-size:.7rem;letter-spacing:3px;color:var(--gold);background:rgba(0,0,0,.6);padding:4px 12px;pointer-events:none;z-index:99001}
+#ctx-menu{position:fixed;z-index:99500;background:rgba(10,8,6,.97);border:1px solid rgba(192,57,43,.4);min-width:180px;box-shadow:4px 4px 20px rgba(0,0,0,.8);display:none}
+.ctx-item{padding:9px 14px;font-family:'Special Elite',cursive;font-size:.78rem;color:var(--paper);cursor:pointer;letter-spacing:1px;transition:background .2s;display:flex;align-items:center;gap:8px}
+.ctx-item:hover{background:rgba(192,57,43,.2);color:var(--red2)}
+.ctx-sep{border-top:1px solid rgba(139,105,20,.2);margin:3px 0}
+@keyframes glitch{0%{transform:none;filter:none}15%{transform:translate(-4px,2px);filter:hue-rotate(90deg)}30%{transform:translate(4px,-2px);filter:hue-rotate(180deg) saturate(3)}45%{transform:translate(-2px,4px) skewX(2deg);filter:invert(.3)}60%{transform:none;filter:none}75%{transform:translate(-3px,1px);filter:saturate(4)}90%{transform:translate(2px,2px);filter:hue-rotate(90deg)}100%{transform:none;filter:none}}
+body.glitch{animation:glitch .65s linear}
+#ghost-note{position:fixed;bottom:78px;right:26px;background:#140505;border:1px solid var(--red2);color:var(--red2);padding:10px 16px;font-family:'Special Elite',cursive;font-size:.85rem;letter-spacing:2px;z-index:9998;opacity:0;transition:opacity .4s;pointer-events:none;box-shadow:0 0 20px rgba(192,57,43,.3)}
+#ghost-note.show{opacity:1}
+#access-overlay{position:fixed;inset:0;z-index:99800;background:rgba(0,0,0,0);pointer-events:none;display:flex;align-items:center;justify-content:center;transition:background .3s}
+#access-overlay.alarm{background:rgba(192,57,43,.15)}
+#access-text{font-family:'Bebas Neue',cursive;font-size:clamp(2rem,8vw,4rem);letter-spacing:10px;color:var(--red2);opacity:0;transform:scale(.5);transition:opacity .2s,transform .3s cubic-bezier(.34,1.56,.64,1);text-shadow:0 0 30px rgba(192,57,43,.8)}
+#access-overlay.alarm #access-text{opacity:1;transform:scale(1)}
+#idle-note{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,8,6,.95);border:1px solid rgba(139,105,20,.4);color:var(--paper);padding:20px 28px;font-family:'Special Elite',cursive;font-size:.92rem;letter-spacing:2px;z-index:9997;opacity:0;transition:opacity .5s;pointer-events:none;text-align:center;line-height:1.9}
+#idle-note.show{opacity:1}
+#idle-note em{color:var(--gold);display:block;font-style:normal;font-size:1.1rem;margin-bottom:4px}
+@media(max-width:600px){#lang-panel{top:12px;right:12px;gap:4px}.lang-btn{padding:5px 9px;font-size:.6rem}.case-title{font-size:2.2rem}.polaroid img{height:200px}.s1-top-secret{font-size:1.4rem;letter-spacing:5px}}
+</style>
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="ld-logo">B·M</div>
-  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
-  <div class="ld-pct" id="ldPct">Loading…</div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="progress-bar"></div>
+<div id="grain"></div>
+<div id="lamp"></div>
+<div id="lang-panel">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('tr')">TR</button>
+  <button class="lang-btn" onclick="setLang('ru')">RU</button>
+</div>
+<div id="ghost-note">&#128123; The Ghost was here.</div>
+<div id="access-overlay"><div id="access-text">ACCESS GRANTED</div></div>
+<div id="idle-note"><em data-en="Still there?" data-tr="Hâlâ buradasın?" data-ru="Ты ещё здесь?">Still there?</em><span data-en="The Ghost is watching." data-tr="Hayalet izliyor." data-ru="Призрак наблюдает.">The Ghost is watching.</span></div>
+<div id="toast">COPIED &#10003;</div>
+<div id="ctx-menu">
+  <div class="ctx-item" onclick="document.getElementById('ctx-menu').style.display='none'">&#128308; Classified</div>
+  <div class="ctx-item" onclick="document.getElementById('ctx-menu').style.display='none'">&#128204; Pin This</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="document.getElementById('ctx-menu').style.display='none'">&#128065; You're being watched</div>
+</div>
+<div id="lightbox" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&#10005; CLOSE</button>
+  <div id="lb-wrap"><img id="lb-img" src="" alt=""/></div>
+  <div id="lb-pct">100%</div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">B·M</div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#about" data-en="About" data-tr="Hakkımda">About</a></li>
-      <li><a href="#experience" data-en="Experience" data-tr="Deneyim">Experience</a></li>
-      <li><a href="#skills" data-en="Skills" data-tr="Beceriler">Skills</a></li>
-      <li><a href="#education" data-en="Education" data-tr="Eğitim">Education</a></li>
-      <li><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></li>
-    </ul>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+<!-- SCENE 1 — KAPAK -->
+<section class="scene" id="scene1">
+  <div class="scene-bg"></div>
+  <div class="s1-layout">
+    <div class="s1-top-secret reveal" id="ts-stamp" data-en="TOP SECRET" data-tr="GİZLİ" data-ru="СОВЕРШЕННО СЕКРЕТНО">TOP SECRET</div>
+    <div class="s1-card reveal d1">
+      <div class="s1-row"><span class="s1-key" data-en="Subject" data-tr="Kişi" data-ru="Субъект">Subject</span><span class="s1-val">THE GHOST</span></div>
+      <div class="s1-row"><span class="s1-key" data-en="Real Name" data-tr="Gerçek İsim" data-ru="Имя">Real Name</span><span class="s1-val">Babajan Movlyanov</span></div>
+      <div class="s1-row"><span class="s1-key" data-en="Case" data-tr="Dosya" data-ru="Дело">Case</span><span class="s1-val">#1995-08-23</span></div>
+      <div class="s1-row"><span class="s1-key" data-en="Origin" data-tr="Köken" data-ru="Происхождение">Origin</span><span class="s1-val">Magdanly, Turkmenistan</span></div>
+      <div class="s1-row"><span class="s1-key" data-en="Last Seen" data-tr="Son Görüldüğü" data-ru="Последний раз">Last Seen</span><span class="s1-val">Alanya, Turkey</span></div>
+      <div class="s1-row"><span class="s1-key" data-en="Status" data-tr="Durum" data-ru="Статус">Status</span><span class="s1-val s1-active" data-en="ACTIVE" data-tr="AKTİF" data-ru="АКТИВЕН">ACTIVE</span></div>
     </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <span class="pulse-dot"></span>
-      <span data-en="Alanya · Antalya · Available for Work" data-tr="Alanya · Antalya · İş İçin Uygun">Alanya · Antalya · Available for Work</span>
-    </div>
-    <div class="hero-photo-wrap">
-      <img class="hero-photo" src="photos/hero.jpg" alt="Babajan Movlyanov" />
-    </div>
-    <h1 class="hero-name">Babajan<br><span class="gold">Movlyanov</span></h1>
-    <p class="hero-title" id="heroTitle">Graphic Designer</p>
-    <div class="hero-cta">
-      <a href="#contact" class="btn btn-gold" data-en="Get in Touch" data-tr="İletişime Geç">Get in Touch</a>
-      <a href="https://www.instagram.com/mov.bbcan" target="_blank" rel="noopener" class="btn btn-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        @mov.bbcan
-      </a>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-hint-line"></div>
-    <span data-en="Scroll" data-tr="Kaydır">Scroll</span>
+    <div class="reveal d2" style="font-family:'Special Elite',cursive;font-size:.7rem;color:var(--muted);text-align:center;letter-spacing:2px" data-en="Top Secret Psychological Profile" data-tr="Gizli Psikolojik Profil" data-ru="Совершенно секретный профиль">Top Secret Psychological Profile</div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<hr class="section-sep" />
-<div id="about" class="section-wrap">
-  <p class="section-label reveal" data-en="Who I Am" data-tr="Ben Kimim">Who I Am</p>
-  <h2 class="section-title reveal">About Me</h2>
-  <div class="about-grid">
-    <div>
-      <p class="about-text reveal" data-en="I'm a creative and goal-oriented professional currently based in Alanya, Antalya. With a strong background in graphic design, videography, and business management — born in Turkmenistan, educated in Turkey, career built across Dubai and Antalya." data-tr="Alanya, Antalya'da yaşayan yaratıcı ve hedef odaklı bir profesyonelim. Grafik tasarım, videografi ve işletme yönetiminde güçlü bir geçmişe sahibim.">I'm a creative and goal-oriented professional currently based in Alanya, Antalya. With a strong background in graphic design, videography, and business management — born in Turkmenistan, educated in Turkey, career built across Dubai and Antalya.</p>
-      <p class="about-text reveal reveal-delay-1" data-en="Innovative, open to change, passionate about continuous learning. Beyond design, deeply interested in stock market operations and investment analysis." data-tr="Yenilikçi, değişime açık ve sürekli öğrenme konusunda tutkuluyum. Tasarımın ötesinde borsa ve yatırım analizine derin ilgim var.">Innovative, open to change, passionate about continuous learning. Beyond design, deeply interested in stock market operations and investment analysis.</p>
-      <div class="about-stats reveal reveal-delay-2">
-        <div class="stat-box"><div class="stat-num" data-target="5">5+</div><div class="stat-label" data-en="Years Experience" data-tr="Yıl Deneyim">Years Experience</div></div>
-        <div class="stat-box"><div class="stat-num" data-target="2">2</div><div class="stat-label" data-en="Bachelor Degrees" data-tr="Lisans Derecesi">Bachelor Degrees</div></div>
-        <div class="stat-box"><div class="stat-num" data-target="4">4</div><div class="stat-label" data-en="Languages" data-tr="Dil">Languages</div></div>
-        <div class="stat-box"><div class="stat-num" data-target="7">7+</div><div class="stat-label" data-en="Software Tools" data-tr="Yazılım Aracı">Software Tools</div></div>
+<!-- SCENE 2 — MAGDANLY -->
+<section class="scene" id="scene2">
+  <div class="scene-bg"></div>
+  <div class="scene-inner" style="display:flex;flex-direction:column;gap:14px">
+    <div class="board-card reveal">
+      <div class="case-label" data-en="Origin File" data-tr="Köken Dosyası" data-ru="Дело о происхождении">Origin File</div>
+      <div class="case-title">MAGDANLY</div>
+      <div class="case-sub">38°N / 62°E · TURKMENISTAN · LEBAP</div>
+      <hr class="divider"/>
+      <div class="case-body" data-en="A town of coal &amp; cotton, edge of the desert. Born: 23 Aug 1995. Working class mining town. Where The Ghost first appeared." data-tr="Kömür ve pamuk kasabası, çölün kenarı. Doğum: 23 Ağustos 1995. İşçi sınıfı madenci kasabası. Hayalet'in ilk göründüğü yer." data-ru="Шахтёрский городок на краю пустыни. Рождён: 23 Авг 1995. Где Призрак впервые появился.">A town of coal &amp; cotton, edge of the desert. Born: 23 Aug 1995. Where The Ghost first appeared.</div>
+    </div>
+    <div class="polaroid-wrap reveal-rotate d2" style="transform:rotate(4deg);max-width:210px;margin:0 auto" onclick="lbOpen(this)">
+      <div class="polaroid"><img src="scenes/scene2.jpg" alt="Magdanly" loading="lazy"/><div class="polaroid-label" data-en="Downtown · 1990s" data-tr="Şehir Merkezi · 1990'lar" data-ru="Центр · 1990-е">Downtown · 1990s</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 3 — SCHOOL -->
+<section class="scene" id="scene3">
+  <div class="scene-bg"></div>
+  <div class="scene-inner" style="display:flex;flex-direction:column;gap:14px">
+    <div class="board-card reveal">
+      <div class="case-label" data-en="Origin File — School No.5" data-tr="Köken Dosyası — Okul No.5" data-ru="Дело — Школа №5">Origin File — School No.5</div>
+      <div class="case-title" data-en="SCHOOL No.5" data-tr="OKUL No.5" data-ru="ШКОЛА №5">SCHOOL No.5</div>
+      <div class="case-sub">2002 — 2012</div>
+      <hr class="divider"/>
+      <div class="case-body" data-en="Ten years, same walls. Languages absorbed: Turkmen, Russian. Graduated: May 25, 2012. Crossed the border to Turkey: August 2013." data-tr="On yıl, aynı duvarlar. Diller: Türkmence, Rusça. Mezuniyet: 25 Mayıs 2012. Türkiye sınırını geçti: Ağustos 2013." data-ru="Десять лет, те же стены. Языки: туркменский, русский. Выпуск: 25 Мая 2012. Пересёк границу: Авг 2013.">Ten years, same walls. Languages: Turkmen, Russian. Graduated: May 25, 2012. Crossed to Turkey: August 2013.</div>
+    </div>
+    <div class="polaroid-wrap reveal-rotate d2" style="transform:rotate(-3deg);max-width:230px;margin:0 auto" onclick="lbOpen(this)">
+      <div class="polaroid"><img src="scenes/scene3.jpg" alt="School No.5" loading="lazy"/><div class="polaroid-label" data-en="The Subject · Age 17 — Graduation" data-tr="Konu · 17 Yaş — Mezuniyet" data-ru="Субъект · 17 лет — Выпускной">The Subject · Age 17 — Graduation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 4 — TURKEY -->
+<section class="scene" id="scene4">
+  <div class="scene-bg"></div>
+  <div class="scene-inner" style="display:flex;flex-direction:column;gap:14px">
+    <div class="stamp stamp-red reveal" style="display:block;text-align:center;transform:rotate(-2deg)" data-en="CLASSIFIED" data-tr="GİZLİ" data-ru="ЗАСЕКРЕЧЕНО">CLASSIFIED</div>
+    <div class="board-card reveal d1">
+      <div class="case-label">T.C. SAKARYA ÜNİVERSİTESİ · 2016–2021</div>
+      <div class="case-title" data-en="TURKEY YEARS" data-tr="TÜRKİYE YILLARI" data-ru="ТУРЕЦКИЕ ГОДЫ">TURKEY YEARS</div>
+      <hr class="divider"/>
+      <div class="case-body" data-en="Undocumented for 3 years. No ID — but never stopped. Distance learning. Mission complete: 29.09.2021 — Lisans Diploması." data-tr="3 yıl belgesiz. Kimliksiz — ama hiç durmadı. Uzaktan eğitim. Görev tamamlandı: 29.09.2021 — Lisans Diploması." data-ru="3 года без документов. Без паспорта — не остановился. Дистанционное обучение. Миссия выполнена: 29.09.2021.">Undocumented for 3 years. No ID — but never stopped. Distance learning. Mission complete: 29.09.2021</div>
+    </div>
+    <div class="polaroid-wrap reveal-rotate d2" style="transform:rotate(5deg);max-width:190px;margin:0 auto" onclick="lbOpen(this)">
+      <div class="polaroid"><img src="scenes/scene4.jpg" alt="Turkey" loading="lazy"/><div class="polaroid-label">T.C. Sakarya Üniversitesi</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 5 — DUBAI -->
+<section class="scene" id="scene5">
+  <div class="scene-bg"></div>
+  <div class="scene-inner" style="display:flex;flex-direction:column;gap:14px">
+    <div class="board-card reveal">
+      <div class="case-label" data-en="Dubai Operations" data-tr="Dubai Operasyonları" data-ru="Операции в Дубае">Dubai Operations</div>
+      <div class="case-title">DUBAI 2021–2025</div>
+      <div class="case-sub" data-en="Ghost Spotted in UAE — 4 Years Untracked" data-tr="BAE'de Hayalet — 4 Yıl Takipsiz" data-ru="Призрак в ОАЭ — 4 года без следов">Ghost Spotted in UAE — 4 Years Untracked</div>
+      <hr class="divider"/>
+      <div class="case-body" data-en="Career 1: Waiter &amp; Videographer — Ziyafet Restaurant. Career 2: Graphic Designer — Alia Media. Career 3: Front Office — Mercure 5★ Accor. Three languages per shift." data-tr="Kariyer 1: Garson &amp; Videograf — Ziyafet. Kariyer 2: Grafik Tasarımcı — Alia Media. Kariyer 3: Ön Büro — Mercure 5★. Vardiyada üç dil." data-ru="Карьера 1: Официант &amp; Видеограф. Карьера 2: Дизайнер — Alia Media. Карьера 3: Ресепшн — Mercure 5★. Три языка за смену.">Career 1: Waiter &amp; Videographer. Career 2: Graphic Designer — Alia Media. Career 3: Front Office — Mercure 5★. Three languages per shift.</div>
+    </div>
+    <div class="polaroid-wrap reveal-rotate d2" style="transform:rotate(-4deg);max-width:210px;margin:0 auto" onclick="lbOpen(this)">
+      <div class="polaroid"><img src="scenes/scene5.jpg" alt="Dubai" loading="lazy"/><div class="polaroid-label" data-en="Downtown Dubai — The city that never sleeps" data-tr="Dubai — Hiç uyumaz" data-ru="Дубай — Никогда не спит">Downtown Dubai — Never Sleeps</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 6 — TRAVELS -->
+<section class="scene" id="scene6">
+  <div class="scene-bg"></div>
+  <div class="scene-inner" style="display:flex;flex-direction:column;gap:14px">
+    <div class="board-card reveal">
+      <div class="case-label" data-en="Locations Visited" data-tr="Gezilen Lokasyonlar" data-ru="Посещённые локации">Locations Visited</div>
+      <div class="case-title" data-en="TRAVELS" data-tr="SEYAHAT" data-ru="ПУТЕШЕСТВИЯ">TRAVELS</div>
+      <div class="case-sub" data-en="Always moving. Never settling." data-tr="Hep hareket. Asla durağan değil." data-ru="Всегда в движении. Никогда на месте.">Always moving. Never settling.</div>
+      <div class="travel-stats">
+        <div class="t-stat"><div class="t-num">5</div><div class="t-lbl" data-en="Countries" data-tr="Ülke" data-ru="Стран">Countries</div></div>
+        <div class="t-stat"><div class="t-num">18</div><div class="t-lbl" data-en="Cities" data-tr="Şehir" data-ru="Городов">Cities</div></div>
+        <div class="t-stat"><div class="t-num">3+</div><div class="t-lbl" data-en="Continents" data-tr="Kıta" data-ru="Континентов">Continents</div></div>
+        <div class="t-stat"><div class="t-num">&#8734;</div><div class="t-lbl" data-en="Next" data-tr="Sonraki" data-ru="Следующая">Next</div></div>
       </div>
     </div>
-    <div class="about-info reveal reveal-delay-2">
-      <div class="info-row"><span class="info-key" data-en="Full Name" data-tr="Ad Soyad">Full Name</span><span class="info-val">Babajan Movlyanov</span></div>
-      <div class="info-row"><span class="info-key" data-en="Born" data-tr="Doğum">Born</span><span class="info-val" data-en="23 Aug 1995" data-tr="23 Ağu 1995">23 Aug 1995</span></div>
-      <div class="info-row"><span class="info-key" data-en="Nationality" data-tr="Uyruk">Nationality</span><span class="info-val" data-en="Turkmenistani" data-tr="Türkmenistanlı">Turkmenistani</span></div>
-      <div class="info-row"><span class="info-key" data-en="Location" data-tr="Konum">Location</span><span class="info-val">Alanya, Antalya</span></div>
-      <div class="info-row"><span class="info-key">Email</span><span class="info-val">movbbcan@gmail.com</span></div>
-      <div class="info-row"><span class="info-key" data-en="Phone TR" data-tr="Tel TR">Phone TR</span><span class="info-val">+90 506 987 22 23</span></div>
-      <div class="info-row"><span class="info-key" data-en="Phone UAE" data-tr="Tel BAE">Phone UAE</span><span class="info-val">+971 566 733 237</span></div>
-      <div class="info-row"><span class="info-key">Instagram</span><span class="info-val">@mov.bbcan</span></div>
-      <div class="info-row"><span class="info-key" data-en="Status" data-tr="Durum">Status</span><span class="info-val" style="color:var(--gold)" data-en="Open to Opportunities" data-tr="Fırsatlara Açık">Open to Opportunities</span></div>
+    <div class="polaroid-wrap reveal-rotate d2" style="transform:rotate(3deg);max-width:210px;margin:0 auto" onclick="lbOpen(this)">
+      <div class="polaroid"><img src="scenes/scene6.jpg" alt="Travels" loading="lazy"/><div class="polaroid-label" data-en="Still counting…" data-tr="Hâlâ sayılıyor…" data-ru="Счёт идёт…">Still counting…</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- EXPERIENCE -->
-<hr class="section-sep" />
-<div id="experience" class="section-wrap">
-  <p class="section-label reveal" data-en="Career Path" data-tr="Kariyer">Career Path</p>
-  <h2 class="section-title reveal" data-en="Experience" data-tr="Deneyim">Experience</h2>
-  <div class="timeline">
-    <div class="tl-item reveal">
-      <div class="tl-dot green"></div>
-      <div class="tl-period green">2025 — <span data-en="Present" data-tr="Devam Ediyor">Present</span><span class="tl-badge" data-en="Current" data-tr="Aktif">Current</span></div>
-      <div class="tl-role" data-en="Hospitality Professional" data-tr="Turizm Profesyoneli">Hospitality Professional</div>
-      <div class="tl-company">Klub Kastaliya Holiday Village Beach Hotel · Konaklı, Alanya, Antalya</div>
-      <div class="tl-desc" data-en="Working at one of Alanya's premier beach resort hotels in Konaklı. Providing high-quality guest services in an international environment while applying visual and communication skills." data-tr="Alanya'nın en seçkin plaj tatil köylerinden birinde çalışmaktadır. Uluslararası ortamda yüksek kaliteli misafir hizmetleri sunmaktadır.">Working at one of Alanya's premier beach resort hotels in Konaklı. Providing high-quality guest services in an international environment while applying visual and communication skills.</div>
-    </div>
-    <div class="tl-item reveal reveal-delay-1">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2024 — 2025</div>
-      <div class="tl-role" data-en="Front Office · Telephone Operator" data-tr="Ön Büro · Telefon Operatörü">Front Office · Telephone Operator</div>
-      <div class="tl-company">Mercure Hotel · Dubai, UAE</div>
-      <div class="tl-desc" data-en="Managed guest communications, scheduled appointments, provided hotel information and ensured courteous service." data-tr="Misafir iletişimlerini yönetti, randevuları planladı ve kibar hizmet sağladı.">Managed guest communications, scheduled appointments, provided hotel information and ensured courteous service.</div>
-    </div>
-    <div class="tl-item reveal reveal-delay-2">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2023 — 2024</div>
-      <div class="tl-role" data-en="Graphic Designer" data-tr="Grafik Tasarımcı">Graphic Designer</div>
-      <div class="tl-company">Alia Media · Dubai, UAE</div>
-      <div class="tl-desc" data-en="Created brand identities, advertising campaigns, website graphics, logos, book covers and marketing posters." data-tr="Marka kimlikleri, reklam kampanyaları, web grafikleri, logolar ve pazarlama afişleri tasarladı.">Created brand identities, advertising campaigns, website graphics, logos, book covers and marketing posters.</div>
-    </div>
-    <div class="tl-item reveal reveal-delay-3">
-      <div class="tl-dot"></div>
-      <div class="tl-period">2021 — 2023</div>
-      <div class="tl-role" data-en="Waiter & Videographer" data-tr="Garson & Videograf">Waiter & Videographer</div>
-      <div class="tl-company">Ziyafet Turkish Restaurant · Dubai, UAE</div>
-      <div class="tl-desc" data-en="Delivered premium table service while capturing professional photos and videos for promotional use." data-tr="Premium masa servisi sunarken tanıtım amaçlı fotoğraf ve video çekti.">Delivered premium table service while capturing professional photos and videos for promotional use.</div>
+<!-- SCENE 7 — THE MIND -->
+<section class="scene" id="scene7">
+  <div class="scene-bg"></div>
+  <div class="scene-inner">
+    <div class="board-card reveal">
+      <div class="stamp stamp-red reveal d1" style="display:block;text-align:center;margin-bottom:12px;transform:rotate(-1deg)" data-en="TOP SECRET PSYCHOLOGICAL PROFILE" data-tr="GİZLİ PSİKOLOJİK PROFİL" data-ru="СЕКРЕТНЫЙ ПСИХОЛОГИЧЕСКИЙ ПРОФИЛЬ">TOP SECRET PSYCHOLOGICAL PROFILE</div>
+      <div class="mind-grid">
+        <div class="mind-item reveal d1"><div class="mind-icon">&#128200;</div><div class="mind-text"><strong data-en="The Obsession" data-tr="Takıntı" data-ru="Одержимость">The Obsession</strong><span data-en="Bitcoin futures since 2017. Last count of losses: Still can't say." data-tr="2017'den beri Bitcoin vadeli işlemleri. Zarar sayısı: hâlâ söyleyemiyor." data-ru="Фьючерсы на биткоин с 2017. Счёт убытков: до сих пор не может назвать.">Bitcoin futures since 2017. Last count of losses: Still can't say.</span></div></div>
+        <div class="mind-item reveal d2"><div class="mind-icon">&#128187;</div><div class="mind-text"><strong data-en="Nocturnal Operations" data-tr="Gece Operasyonları" data-ru="Ночные операции">Nocturnal Operations</strong><span data-en="Vibe coding 2AM on VPS. Building AI trading bots. Ideas die before screens." data-tr="Gece 2'de VPS'te kod yazıyor. AI trading botları inşa ediyor." data-ru="Вайб-кодинг в 2 ночи на VPS. Строит AI торговых ботов.">Vibe coding 2AM on VPS. Building AI trading bots.</span></div></div>
+        <div class="mind-item reveal d3"><div class="mind-icon">&#128218;</div><div class="mind-text"><strong data-en="The Library — Istanbul" data-tr="Kütüphane — İstanbul" data-ru="Библиотека — Стамбул">The Library — Istanbul</strong><span data-en="Books before screens. Always. Never walks without music." data-tr="Ekrandan önce kitap. Her zaman. Müziksiz hiç yürümez." data-ru="Книги прежде экранов. Всегда. Без музыки не ходит.">Books before screens. Always. Never walks without music.</span></div></div>
+        <div class="mind-item reveal d4"><div class="mind-icon">&#127758;</div><div class="mind-text"><strong data-en="Intelligence Gathering" data-tr="İstihbarat" data-ru="Разведка">Intelligence Gathering</strong><span data-en="Sun Tzu · Kapiński · Kiyosaki · Stock Operations." data-tr="Sun Tzu · Kapiński · Kiyosaki · Borsa Operasyonları." data-ru="Сунь Цзы · Капиньски · Кийосаки · Биржевые операции.">Sun Tzu · Kapiński · Kiyosaki · Stock Operations.</span></div></div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- SKILLS -->
-<hr class="section-sep" />
-<div id="skills" class="section-wrap">
-  <p class="section-label reveal" data-en="Capabilities" data-tr="Yetkinlikler">Capabilities</p>
-  <h2 class="section-title reveal" data-en="Skills" data-tr="Beceriler">Skills</h2>
-  <div class="skills-grid">
-    <div class="reveal">
-      <div class="skill-group-label" data-en="Design & Creative" data-tr="Tasarım & Yaratıcılık">Design & Creative</div>
-      <div class="skill-row"><div class="skill-meta"><span>Adobe Photoshop</span><span class="skill-level" data-en="Advanced" data-tr="İleri">Advanced</span></div><div class="skill-track"><div class="skill-fill" data-w="88"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span>Adobe Illustrator</span><span class="skill-level" data-en="Advanced" data-tr="İleri">Advanced</span></div><div class="skill-track"><div class="skill-fill" data-w="82"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span>After Effects</span><span class="skill-level" data-en="Intermediate" data-tr="Orta">Intermediate</span></div><div class="skill-track"><div class="skill-fill" data-w="70"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span data-en="Photography & Video" data-tr="Fotoğraf & Video">Photography & Video</span><span class="skill-level" data-en="Advanced" data-tr="İleri">Advanced</span></div><div class="skill-track"><div class="skill-fill" data-w="85"></div></div></div>
-    </div>
-    <div class="reveal reveal-delay-2">
-      <div class="skill-group-label" data-en="Technology & Markets" data-tr="Teknoloji & Piyasalar">Technology & Markets</div>
-      <div class="skill-row"><div class="skill-meta"><span>N8N & Python</span><span class="skill-level" data-en="Intermediate" data-tr="Orta">Intermediate</span></div><div class="skill-track"><div class="skill-fill" data-w="65"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span>TradingView</span><span class="skill-level" data-en="Intermediate" data-tr="Orta">Intermediate</span></div><div class="skill-track"><div class="skill-fill" data-w="72"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span>MetaTrader 4 & 5</span><span class="skill-level" data-en="Intermediate" data-tr="Orta">Intermediate</span></div><div class="skill-track"><div class="skill-fill" data-w="68"></div></div></div>
-      <div class="skill-row"><div class="skill-meta"><span>Microsoft Office</span><span class="skill-level" data-en="Proficient" data-tr="Yetkin">Proficient</span></div><div class="skill-track"><div class="skill-fill" data-w="80"></div></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- GALLERY -->
-<hr class="section-sep" />
-<div class="gallery-wrap">
-  <p class="gallery-label reveal" data-en="Photography · @mov.bbcan" data-tr="Fotoğrafçılık · @mov.bbcan">Photography · @mov.bbcan</p>
-  <div class="gallery-track" id="gallery">
-    <div class="gallery-item"><img src="photos/photo1.jpg" alt="Babajan Movlyanov" loading="lazy" /></div>
-    <div class="gallery-item"><img src="photos/photo2.webp" alt="Babajan Movlyanov" loading="lazy" /></div>
-    <div class="gallery-item"><img src="photos/photo3.webp" alt="Babajan Movlyanov" loading="lazy" /></div>
-    <div class="gallery-item"><img src="photos/photo4.jpg" alt="Babajan Movlyanov" loading="lazy" /></div>
-    <div class="gallery-item"><img src="photos/photo5.webp" alt="Babajan Movlyanov" loading="lazy" /></div>
-    <div class="gallery-item"><img src="photos/photo6.png" alt="Babajan Movlyanov" loading="lazy" /></div>
-  </div>
-</div>
-
-<!-- LANGUAGES -->
-<hr class="section-sep" />
-<div class="section-wrap">
-  <p class="section-label reveal" data-en="Communication" data-tr="İletişim">Communication</p>
-  <h2 class="section-title reveal" data-en="Languages" data-tr="Diller">Languages</h2>
-  <div class="lang-cards">
-    <div class="lang-card reveal"><div class="lang-name-text" data-en="English" data-tr="İngilizce">English</div><div class="lang-lvl" data-en="Professional" data-tr="Profesyonel">Professional</div><div class="lang-dots"><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot off"></div></div></div>
-    <div class="lang-card reveal reveal-delay-1"><div class="lang-name-text" data-en="Turkish" data-tr="Türkçe">Turkish</div><div class="lang-lvl" data-en="Fluent" data-tr="Akıcı">Fluent</div><div class="lang-dots"><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div></div></div>
-    <div class="lang-card reveal reveal-delay-2"><div class="lang-name-text" data-en="Russian" data-tr="Rusça">Russian</div><div class="lang-lvl" data-en="Professional" data-tr="Profesyonel">Professional</div><div class="lang-dots"><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot off"></div></div></div>
-    <div class="lang-card reveal reveal-delay-3"><div class="lang-name-text" data-en="Turkmen" data-tr="Türkmence">Turkmen</div><div class="lang-lvl" data-en="Native" data-tr="Anadil">Native</div><div class="lang-dots"><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div><div class="l-dot on"></div></div></div>
-  </div>
-</div>
-
-<!-- EDUCATION -->
-<hr class="section-sep" />
-<div id="education" class="section-wrap">
-  <p class="section-label reveal" data-en="Academic Background" data-tr="Akademik Geçmiş">Academic Background</p>
-  <h2 class="section-title reveal" data-en="Education" data-tr="Eğitim">Education</h2>
-  <div class="edu-grid">
-    <div class="edu-card reveal"><div class="edu-period">2017 — 2021 · Türkiye</div><div class="edu-deg" data-en="Bachelor of Business Management" data-tr="İşletme Yönetimi Lisans">Bachelor of Business Management</div><div class="edu-school">Sakarya Üniversitesi</div><div class="edu-desc" data-en="Company management, marketing, finance, HR. Trainee at Sakarya BEKO International Export & Import and SAMEK Language Center." data-tr="Şirket yönetimi, pazarlama, finans, İK. Sakarya BEKO ve SAMEK Dil Merkezi'nde staj.">Company management, marketing, finance, HR. Trainee at Sakarya BEKO International Export & Import and SAMEK Language Center.</div></div>
-    <div class="edu-card reveal reveal-delay-2"><div class="edu-period">2014 — 2016 · Türkiye</div><div class="edu-deg" data-en="Bachelor of Philosophy" data-tr="Felsefe Lisans">Bachelor of Philosophy</div><div class="edu-school">Sakarya Üniversitesi</div><div class="edu-desc" data-en="Knowledge, truth, morality, values and thought. Strong analytical and critical thinking through logic and philosophy." data-tr="Bilgi, hakikat, ahlak ve düşünce. Mantık ve felsefe aracılığıyla analitik düşünme becerisi.">Knowledge, truth, morality, values and thought. Strong analytical and critical thinking through logic and philosophy.</div></div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<hr class="section-sep" />
-<div id="contact" class="section-wrap">
-  <p class="section-label reveal" data-en="Let's Connect" data-tr="Bağlanalım">Let's Connect</p>
-  <h2 class="section-title reveal" data-en="Get in Touch" data-tr="İletişime Geç">Get in Touch</h2>
-  <div class="contact-grid">
-    <div class="reveal">
-      <p class="contact-intro" data-en="Whether you're looking for a creative designer, a dedicated team member, or simply want to connect — I'm always open to new conversations and opportunities." data-tr="İster yaratıcı bir tasarımcı, ister özverili bir ekip üyesi arıyorsunuz — her zaman yeni fırsatlara açığım.">Whether you're looking for a creative designer, a dedicated team member, or simply want to connect — I'm always open to new conversations and opportunities.</p>
-      <a href="mailto:movbbcan@gmail.com" class="btn btn-gold" style="margin-top:8px" data-en="Send Email" data-tr="E-posta Gönder">Send Email</a>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:movbbcan@gmail.com" class="c-link reveal"><div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="c-label">Email</div><div class="c-value">movbbcan@gmail.com</div></div></a>
-      <a href="tel:+905069872223" class="c-link reveal reveal-delay-1"><div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="c-label" data-en="Phone · Turkey" data-tr="Telefon · Türkiye">Phone · Turkey</div><div class="c-value">+90 506 987 22 23</div></div></a>
-      <a href="tel:+971566733237" class="c-link reveal reveal-delay-2"><div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="c-label" data-en="Phone · UAE" data-tr="Telefon · BAE">Phone · UAE</div><div class="c-value">+971 566 733 237</div></div></a>
-      <a href="https://www.instagram.com/mov.bbcan" target="_blank" rel="noopener" class="c-link reveal reveal-delay-3"><div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div><div class="c-label">Instagram</div><div class="c-value">@mov.bbcan</div></div></a>
+<!-- SCENE 8 — FINAL -->
+<section class="scene" id="scene8">
+  <div class="scene-bg"></div>
+  <div class="scene-inner">
+    <div class="closed-stamp reveal" data-en="CASE FILE CLOSED — BUT THE GHOST NEVER STOPS" data-tr="DOSYA KAPATILDI — AMA HAYALET ASLA DURMUYOR" data-ru="ДЕЛО ЗАКРЫТО — НО ПРИЗРАК НИКОГДА НЕ ОСТАНАВЛИВАЕТСЯ">CASE FILE CLOSED —<br>BUT THE GHOST NEVER STOPS</div>
+    <div class="board-card reveal d1">
+      <div class="case-label" data-en="Current Location" data-tr="Güncel Konum" data-ru="Местонахождение">Current Location</div>
+      <div class="case-title">ALANYA <span style="font-size:.55em;color:var(--gold)">&#127481;&#127479;</span></div>
+      <div class="case-sub">Klub Kastaliya Holiday Village · Konaklı</div>
+      <hr class="divider"/>
+      <div class="case-body" data-en="Available for: Trading Systems · Hotel Technology · Automation · Creative Design" data-tr="Müsait: Trading Sistemleri · Otel Teknolojisi · Otomasyon · Yaratıcı Tasarım" data-ru="Открыт для: Торговых систем · Отельных технологий · Автоматизации · Дизайна">Available for: Trading Systems · Hotel Technology · Automation · Creative Design</div>
+      <div class="contact-notes">
+        <div class="c-note sticky sticky-yellow reveal d1" style="transform:rotate(-1deg)" onclick="copyText('movbbcan@gmail.com')">
+          <div class="c-icon">&#128231;</div><div><div class="c-lbl">Email</div><div class="c-val">movbbcan@gmail.com</div></div>
+        </div>
+        <div class="c-note sticky sticky-white reveal d2" style="transform:rotate(.8deg)" onclick="copyText('+90 506 987 22 23')">
+          <div class="c-icon">&#128241;</div><div><div class="c-lbl" data-en="Phone · Turkey" data-tr="Telefon · Türkiye" data-ru="Телефон · Турция">Phone · Turkey</div><div class="c-val">+90 506 987 22 23</div></div>
+        </div>
+        <div class="c-note sticky sticky-yellow reveal d3" style="transform:rotate(-0.5deg)" onclick="copyText('@mov.bbcan')">
+          <div class="c-icon">&#128247;</div><div><div class="c-lbl">Instagram</div><div class="c-val">@mov.bbcan</div></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<footer>
-  <span>© 2025 Babajan Movlyanov</span>
-  <span>Konaklı · Alanya · Antalya</span>
-</footer>
+</section>
 
 <script>
-// ── LOADER (CSS animasyonu yeterli, sadece hide et) ──
-window.addEventListener('load', function() {
-  var pct = 0;
-  var el = document.getElementById('ldPct');
-  var t = setInterval(function() {
-    pct = Math.min(pct + Math.random() * 18, 100);
-    el.textContent = Math.floor(pct) + '%';
-    if (pct >= 100) { clearInterval(t); hideLoader(); }
-  }, 80);
-});
-// Fallback: en fazla 3 saniye bekle
-setTimeout(hideLoader, 3000);
-
-var loaderHidden = false;
-function hideLoader() {
-  if (loaderHidden) return;
-  loaderHidden = true;
-  var l = document.getElementById('loader');
-  l.style.transition = 'opacity 0.5s, transform 0.5s';
-  l.style.opacity = '0';
-  l.style.transform = 'translateY(-100%)';
-  setTimeout(function(){ l.style.display = 'none'; }, 500);
-}
-
-// ── SCROLL REVEAL (native IntersectionObserver) ──
-var io = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      // Skill bars
-      e.target.querySelectorAll('.skill-fill').forEach(function(bar) {
-        bar.style.width = bar.dataset.w + '%';
-      });
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal, .reveal-left').forEach(function(el) { io.observe(el); });
-
-// ── TYPEWRITER (no library) ──
-var titles    = ['Graphic Designer','Videographer','Business Professional','Photographer'];
-var titlesTR  = ['Grafik Tasarımcı','Videograf','İş Profesyoneli','Fotoğrafçı'];
-var ti = 0, ci = 0, deleting = false;
-var titleEl = document.getElementById('heroTitle');
-
-function type() {
-  var lang = localStorage.getItem('lang') || 'en';
-  var arr = lang === 'tr' ? titlesTR : titles;
-  var cur = arr[ti];
-  if (!deleting) {
-    titleEl.textContent = cur.slice(0, ++ci);
-    if (ci === cur.length) { deleting = true; setTimeout(type, 2200); return; }
-  } else {
-    titleEl.textContent = cur.slice(0, --ci);
-    if (ci === 0) { deleting = false; ti = (ti + 1) % arr.length; setTimeout(type, 300); return; }
-  }
-  setTimeout(type, deleting ? 45 : 75);
-}
-setTimeout(type, 1200);
-
-// ── GALLERY DRAG ──
-var g = document.getElementById('gallery');
-var gDown = false, gX, gScroll;
-g.addEventListener('mousedown', function(e) { gDown = true; gX = e.pageX - g.offsetLeft; gScroll = g.scrollLeft; g.style.cursor = 'grabbing'; });
-g.addEventListener('mouseleave', function() { gDown = false; g.style.cursor = 'grab'; });
-g.addEventListener('mouseup', function() { gDown = false; g.style.cursor = 'grab'; });
-g.addEventListener('mousemove', function(e) { if (!gDown) return; e.preventDefault(); g.scrollLeft = gScroll - (e.pageX - g.offsetLeft - gX) * 1.4; });
-
-// ── LANGUAGE ──
-function setLang(lang) {
-  document.querySelectorAll('[data-en]').forEach(function(el) {
-    var v = el.getAttribute('data-' + lang);
-    if (v) el.innerHTML = v;
-  });
-  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
-  document.documentElement.lang = lang;
-  localStorage.setItem('lang', lang);
-}
-var saved = localStorage.getItem('lang');
-if (saved && saved !== 'en') setLang(saved);
-
-// ── STAT COUNTERS ──
-var counted = false;
-new IntersectionObserver(function(entries) {
-  if (entries[0].isIntersecting && !counted) {
-    counted = true;
-    document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
-      var end = parseInt(el.dataset.target), start = 0;
-      var timer = setInterval(function() {
-        start += Math.ceil(end / 30);
-        if (start >= end) { el.textContent = end + '+'; clearInterval(timer); }
-        else el.textContent = start + '+';
-      }, 40);
-    });
-  }
-}, { threshold: 0.3 }).observe(document.querySelector('.about-stats'));
+const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';document.getElementById('lamp').style.left=mx+'px';document.getElementById('lamp').style.top=my+'px';resetIdle()},{passive:true});
+(function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('button,.polaroid-wrap,.c-note,.lang-btn').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'))});
+window.addEventListener('scroll',()=>{document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'},{passive:true});
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.reveal,.reveal-rotate').forEach(el=>io.observe(el));
+function setLang(l){document.querySelectorAll('[data-en]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v)el.innerHTML=v});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector('.lang-btn[onclick="setLang(\''+l+'\')"]').classList.add('active');document.documentElement.lang=l;localStorage.setItem('ghost_lang',l)}
+const sl=localStorage.getItem('ghost_lang');if(sl&&sl!=='en')setLang(sl);
+let lbS=1,lbD=false,lbSX=0,lbSY=0,lbTX=0,lbTY=0;
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbW=document.getElementById('lb-wrap'),lbP=document.getElementById('lb-pct');
+function lbOpen(el){const img=el.querySelector('img');if(!img)return;lbImg.src=img.src;lbS=1;lbTX=0;lbTY=0;lbImg.style.transform='';lbP.textContent='100%';lb.classList.add('open');document.body.style.overflow='hidden'}
+function lbClose(){lb.classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lbClose()});
+function lbU(){lbImg.style.transform='scale('+lbS+') translate('+(lbTX/lbS)+'px,'+(lbTY/lbS)+'px)';lbP.textContent=Math.round(lbS*100)+'%'}
+lbW.addEventListener('wheel',e=>{e.preventDefault();lbS=Math.min(3,Math.max(.5,lbS+e.deltaY*-.002));lbU()},{passive:false});
+lbW.addEventListener('dblclick',()=>{lbS=1;lbTX=0;lbTY=0;lbU()});
+lbW.addEventListener('mousedown',e=>{lbD=true;lbSX=e.clientX-lbTX;lbSY=e.clientY-lbTY;lbW.classList.add('grabbing')});
+window.addEventListener('mousemove',e=>{if(!lbD)return;lbTX=e.clientX-lbSX;lbTY=e.clientY-lbSY;lbU()});
+window.addEventListener('mouseup',()=>{lbD=false;lbW.classList.remove('grabbing')});
+let pD=0;lbW.addEventListener('touchstart',e=>{if(e.touches.length===2)pD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY)},{passive:true});
+lbW.addEventListener('touchmove',e=>{if(e.touches.length===2){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);lbS=Math.min(3,Math.max(.5,lbS*(d/pD)));pD=d;lbU()}},{passive:true});
+document.querySelectorAll('.polaroid-wrap').forEach(pw=>pw.addEventListener('touchend',e=>{if(e.changedTouches.length===1)lbOpen(pw)},{passive:true}));
+function copyText(t){navigator.clipboard.writeText(t).then(()=>{const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)})}
+const ctx=document.getElementById('ctx-menu');
+document.addEventListener('contextmenu',e=>{e.preventDefault();ctx.style.display='block';ctx.style.left=Math.min(e.clientX,window.innerWidth-190)+'px';ctx.style.top=Math.min(e.clientY,window.innerHeight-120)+'px'});
+document.addEventListener('click',()=>ctx.style.display='none');
+let buf='';document.addEventListener('keydown',e=>{buf=(buf+e.key.toLowerCase()).slice(-5);if(buf==='ghost'){document.body.classList.add('glitch');setTimeout(()=>document.body.classList.remove('glitch'),700);const gn=document.getElementById('ghost-note');gn.classList.add('show');setTimeout(()=>gn.classList.remove('show'),3000);buf=''}});
+let tc=0,tt;document.getElementById('ts-stamp').addEventListener('click',()=>{tc++;clearTimeout(tt);tt=setTimeout(()=>tc=0,800);if(tc>=3){tc=0;try{const ac=new(window.AudioContext||window.webkitAudioContext)();[440,660,880].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=f;o.type='square';g.gain.setValueAtTime(.12,ac.currentTime+i*.13);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+i*.13+.1);o.start(ac.currentTime+i*.13);o.stop(ac.currentTime+i*.13+.12)})}catch(e){}const ov=document.getElementById('access-overlay');ov.classList.add('alarm');setTimeout(()=>ov.classList.remove('alarm'),2200)}});
+let idleT;function resetIdle(){clearTimeout(idleT);document.getElementById('idle-note').classList.remove('show');idleT=setTimeout(()=>document.getElementById('idle-note').classList.add('show'),30000)}
+['mousemove','keydown','scroll','touchstart'].forEach(ev=>document.addEventListener(ev,resetIdle,{passive:true}));
+resetIdle();
+window.addEventListener('touchstart',()=>{dot.style.display='none';ring.style.display='none'},{once:true,passive:true});
 </script>
-
 </body>
 </html>

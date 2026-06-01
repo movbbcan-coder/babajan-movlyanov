@@ -39,7 +39,7 @@ body.ch #cursor-ring{width:48px;height:48px;border-color:#e74c3c}
 
 /* ── SCENE BLOCKS ── */
 .sb{display:block;line-height:0;cursor:zoom-in;position:relative}
-.sb img{width:100%;display:block;margin:0;padding:0;line-height:0;vertical-align:bottom}
+.sb img{width:100%;display:block;margin:0;padding:0;line-height:0;vertical-align:bottom;will-change:transform}
 .sb:hover img{filter:brightness(1.06)}
 
 /* ── CONTACT SECTION (scene 8 below) ── */
@@ -118,6 +118,31 @@ body.glitch{animation:glitch .6s linear}
 .gt:hover .gt-name{opacity:1}
 
 @media(max-width:600px){#lang{top:10px;right:10px;gap:3px}.lb{padding:4px 8px;font-size:.6rem}.sb:hover img{filter:none}.sg,.sc-btn{padding:4px 7px;font-size:.55rem}#glb-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── SCROLL REVEAL ── */
+.sb{opacity:0;transform:translateY(44px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1)}
+.sb.vis{opacity:1;transform:translateY(0)}
+
+/* ── HOLOGRAM MODAL ── */
+#holo{position:fixed;inset:0;z-index:99100;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.78);backdrop-filter:blur(4px)}
+#holo.open{display:flex;animation:holo-in .22s ease}
+@keyframes holo-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.holo-box{position:relative;background:rgba(6,3,3,.97);border:1px solid #c0392b;max-width:360px;width:92%;padding:24px 20px 20px;box-shadow:0 0 60px rgba(231,76,60,.28),0 0 120px rgba(231,76,60,.08),inset 0 0 40px rgba(231,76,60,.03);overflow:hidden}
+.holo-box::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(231,76,60,.018) 3px,rgba(231,76,60,.018) 4px);pointer-events:none}
+.hc{position:absolute;width:14px;height:14px;border-color:#e74c3c;border-style:solid}
+.hc.tl{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.hc.tr{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.hc.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.hc.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.holo-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;position:relative;z-index:1}
+.holo-lbl{font-family:'Bebas Neue',cursive;font-size:.58rem;letter-spacing:5px;color:rgba(231,76,60,.6)}
+.holo-x{background:none;border:1px solid rgba(231,76,60,.35);color:#e74c3c;font-family:'Bebas Neue',cursive;font-size:.6rem;letter-spacing:2px;padding:3px 9px;cursor:pointer;transition:background .2s;position:relative;z-index:1}
+.holo-x:hover{background:rgba(231,76,60,.18)}
+#holo-title{font-family:'Bebas Neue',cursive;font-size:1.25rem;letter-spacing:5px;color:#c9a84c;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(139,105,20,.28);position:relative;z-index:1}
+#holo-body{font-family:'Special Elite',cursive;font-size:.82rem;color:#d4c9a8;line-height:1.82;letter-spacing:.3px;position:relative;z-index:1}
+#holo-foot{margin-top:12px;font-family:'Bebas Neue',cursive;font-size:.55rem;letter-spacing:3px;color:rgba(192,57,43,.38);position:relative;z-index:1;text-align:center}
+.holo-scan{position:absolute;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(231,76,60,.07),transparent);animation:hscan 3s linear infinite;pointer-events:none;z-index:2;top:-60px}
+@keyframes hscan{0%{top:-60px}100%{top:calc(100% + 60px)}}
 </style>
 </head>
 <body>
@@ -159,6 +184,21 @@ body.glitch{animation:glitch .6s linear}
   <div id="lbz">100%</div>
 </div>
 
+<!-- HOLOGRAM POPUP -->
+<div id="holo" onclick="if(event.target===this)holoClose()">
+  <div class="holo-box">
+    <div class="hc tl"></div><div class="hc tr"></div><div class="hc bl"></div><div class="hc br"></div>
+    <div class="holo-scan"></div>
+    <div class="holo-top">
+      <span class="holo-lbl">&#9670; CLASSIFIED FILE &#9670;</span>
+      <button class="holo-x" onclick="holoClose()">&#10005; CLOSE</button>
+    </div>
+    <div id="holo-title">CASE FILE</div>
+    <div id="holo-body"></div>
+    <div id="holo-foot">&#9632; END OF FILE &#9632;</div>
+  </div>
+</div>
+
 <!-- GALLERY OVERLAY -->
 <div id="glb">
   <div id="glb-hdr">
@@ -174,66 +214,66 @@ body.glitch{animation:glitch .6s linear}
 <main id="board">
 
   <!-- SCENE 1 — KAPAK -->
-  <div class="sb" id="s1" onclick="lbOpen(this)" data-ts="1" data-scene="scene1">
+  <div class="sb" id="s1" onclick="lbOpen(this)" data-ts="1" data-scene="scene1" data-title="CASE FILE #1995-08-23">
     <img src="scenes/scene1.jpg" alt="THE GHOST — Case File #1995-08-23 | Babajan Movlyanov | Alanya, Turkey | Status: ACTIVE" loading="eager"/>
     <button class="sg" onclick="glbOpen('scene1',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="Case File #1995-08-23 · Babajan Movlyanov · Status: ACTIVE · Current location: Alanya, Turkey" data-tr="Dosya #1995-08-23 · Babajan Movlyanov · Durum: AKTİF · Güncel konum: Alanya, Türkiye" data-ru="Дело #1995-08-23 · Бабаджан Мовлянов · Статус: АКТИВЕН · Местонахождение: Аланья, Турция">Case File #1995-08-23 · Babajan Movlyanov · Status: ACTIVE · Current location: Alanya, Turkey</span></div>
   </div>
 
   <!-- SCENE 2 — MAGDANLY -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene2">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene2" data-title="ORIGIN: MAGDANLY">
     <img src="scenes/scene2.jpg" alt="Origin: Magdanly, Turkmenistan — Born 23 Aug 1995 — Coal &amp; cotton town, edge of the desert" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene2',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="Origin: Magdanly, Turkmenistan — Born 23 Aug 1995 — Coal &amp; cotton town on the edge of the desert" data-tr="Köken: Magdanlı, Türkmenistan — 23 Ağustos 1995 doğumlu — Çölün kenarında kömür ve pamuk şehri" data-ru="Происхождение: Магданлы, Туркменистан — родился 23 авг. 1995 — Угольно-хлопковый город на краю пустыни">Origin: Magdanly, Turkmenistan — Born 23 Aug 1995 — Coal &amp; cotton town on the edge of the desert</span></div>
   </div>
 
   <!-- SCENE 3 — SCHOOL NO.5 -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene3">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene3" data-title="SCHOOL NO. 5 · 2002–2012">
     <img src="scenes/scene3.jpg" alt="School No.5 — 2002–2012 — Ten years, same walls — Graduated May 25, 2012" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene3',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="School No.5 — 2002–2012 — Ten years, same walls. Graduated May 25, 2012." data-tr="5 Numaralı Okul — 2002–2012 — On yıl, aynı duvarlar. Mezun: 25 Mayıs 2012." data-ru="Школа №5 — 2002–2012 — Десять лет, те же стены. Окончил 25 мая 2012 г.">School No.5 — 2002–2012 — Ten years, same walls. Graduated May 25, 2012.</span></div>
   </div>
 
   <!-- SCENE 4 — TURKEY YEARS -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene4">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene4" data-title="CLASSIFIED: TURKEY 2014–2021">
     <img src="scenes/scene4.jpg" alt="CLASSIFIED — Sakarya University 2016–2021 — 3 years undocumented — Mission complete 29.09.2021" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene4',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="CLASSIFIED — Sakarya University 2014–2021. Bachelor of Philosophy &amp; Business Management. Mission complete 29.09.2021." data-tr="GİZLİ — Sakarya Üniversitesi 2014–2021. Felsefe &amp; İşletme Lisansı. Görev tamamlandı: 29.09.2021." data-ru="ЗАСЕКРЕЧЕНО — Сакарийский университет 2014–2021. Философия и управление бизнесом. Миссия выполнена 29.09.2021.">CLASSIFIED — Sakarya University 2014–2021. Bachelor of Philosophy &amp; Business Management. Mission complete 29.09.2021.</span></div>
   </div>
 
   <!-- SCENE 5 — DUBAI -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene5">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene5" data-title="DUBAI OPERATIONS 2021–2025">
     <img src="scenes/scene5.jpg" alt="Dubai Operations 2021–2025 — Ghost spotted in UAE — 4 years untracked" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene5',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="Dubai Operations 2021–2025 — Ghost spotted in UAE. Alia Media · Ziyafet Restaurant · Mercure Hotel. 4 years untracked." data-tr="Dubai Operasyonları 2021–2025 — Hayalet BAE'de görüldü. Alia Media · Ziyafet Restaurant · Mercure Hotel. 4 yıl takip dışı." data-ru="Операции в Дубае 2021–2025 — Призрак замечен в ОАЭ. Alia Media · Ziyafet Restaurant · Mercure Hotel. 4 года вне слежки.">Dubai Operations 2021–2025 — Ghost spotted in UAE. Alia Media · Ziyafet Restaurant · Mercure Hotel. 4 years untracked.</span></div>
   </div>
 
   <!-- SCENE 6 — TRAVELS -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene6">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene6" data-title="FIELD OPERATIONS · 5 COUNTRIES">
     <img src="scenes/scene6.jpg" alt="Travels — 5 Countries, 18 Cities — Always moving, never settling" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene6',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="Travels — 5 Countries, 18 Cities — Turkmenistan · Turkey · UAE · Uzbekistan · Russia. Always moving, never settling." data-tr="Seyahatler — 5 Ülke, 18 Şehir — Türkmenistan · Türkiye · BAE · Özbekistan · Rusya. Hep yolda, hiç durmadan." data-ru="Путешествия — 5 стран, 18 городов — Туркменистан · Турция · ОАЭ · Узбекистан · Россия. Всегда в движении.">Travels — 5 Countries, 18 Cities — Turkmenistan · Turkey · UAE · Uzbekistan · Russia. Always moving, never settling.</span></div>
   </div>
 
   <!-- SCENE 7 — THE MIND -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene7">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene7" data-title="PSYCHOLOGICAL PROFILE · TOP SECRET">
     <img src="scenes/scene7.jpg" alt="Top Secret Psychological Profile — Bitcoin futures since 2017 — Vibe coding 2AM — Books before screens" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene7',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="TOP SECRET — Psychological Profile: Bitcoin futures since 2017 · Vibe coding at 2AM · Books before screens · Thinks in systems." data-tr="ÇOK GİZLİ — Psikolojik Profil: 2017'den beri Bitcoin vadeli işlemleri · Gece 2'de kod yazma · Ekrandan önce kitap · Sistem düşünür." data-ru="СОВЕРШЕННО СЕКРЕТНО — Психологический профиль: Фьючерсы биткоина с 2017 г. · Кодинг в 2 ночи · Книги прежде экранов · Мышление системами.">TOP SECRET — Psychological Profile: Bitcoin futures since 2017 · Vibe coding at 2AM · Books before screens · Thinks in systems.</span></div>
   </div>
 
   <!-- SCENE 8 — FINAL -->
-  <div class="sb" onclick="lbOpen(this)" data-scene="scene8">
+  <div class="sb" onclick="lbOpen(this)" data-scene="scene8" data-title="STATUS: ACTIVE · ALANYA">
     <img src="scenes/scene8.jpg" alt="Case File Closed — But The Ghost Never Stops — Current Location: Alanya, Turkey" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene8',event)">&#8862; PHOTOS</button>
-    <button class="sc-btn" onclick="captionToggle(this,event)">&#9670; INFO</button>
+    <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
     <div class="sc-panel"><span class="sc-txt" data-en="Case File Closed — But The Ghost Never Stops. Current Location: Alanya, Turkey. Status: ACTIVE." data-tr="Dosya Kapatıldı — Ama Hayalet Hiç Durmuyor. Güncel Konum: Alanya, Türkiye. Durum: AKTİF." data-ru="Дело закрыто — Но Призрак никогда не останавливается. Текущее местонахождение: Аланья, Турция. Статус: АКТИВЕН.">Case File Closed — But The Ghost Never Stops. Current Location: Alanya, Turkey. Status: ACTIVE.</span></div>
   </div>
 
@@ -333,7 +373,7 @@ function lbUpdate(){
   LBI.style.transform=`scale(${lbS}) translate(${lbTX/lbS}px,${lbTY/lbS}px)`;
   LBZ.textContent=Math.round(lbS*100)+'%';
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){lbClose();glbClose();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){lbClose();glbClose();holoClose();}});
 
 /* wheel zoom */
 LBW.addEventListener('wheel',e=>{
@@ -488,6 +528,40 @@ function captionToggle(btn,e){
     });
   }
 }
+
+/* ── SCROLL REVEAL ── */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target);}});
+},{threshold:.07});
+document.querySelectorAll('.sb').forEach(el=>revObs.observe(el));
+
+/* ── PARALLAX ── */
+function upPx(){
+  document.querySelectorAll('.sb').forEach(sb=>{
+    const r=sb.getBoundingClientRect();
+    if(r.bottom<-200||r.top>window.innerHeight+200)return;
+    const p=(window.innerHeight*.5-r.top-r.height*.5)/(window.innerHeight+r.height);
+    sb.querySelector('img').style.transform=`translateY(${p*55}px)`;
+  });
+}
+window.addEventListener('scroll',upPx,{passive:true});
+upPx();
+
+/* ── HOLOGRAM ── */
+const HOLO=document.getElementById('holo');
+function holoOpen(btn,e){
+  if(e)e.stopPropagation();
+  const sb=btn.closest('.sb');
+  const txt=sb.querySelector('.sc-txt');
+  const lang=localStorage.getItem('ghost_lang')||'en';
+  const desc=(txt?txt.getAttribute('data-'+lang)||txt.getAttribute('data-en'):'')||'';
+  const title=sb.getAttribute('data-title')||'CLASSIFIED';
+  document.getElementById('holo-title').textContent=title;
+  document.getElementById('holo-body').textContent=desc;
+  HOLO.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function holoClose(){HOLO.classList.remove('open');document.body.style.overflow='';}
 
 /* ── IDLE 30s ── */
 let idleT;

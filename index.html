@@ -214,7 +214,7 @@ body.glitch{animation:glitch .6s linear}
 <main id="board">
 
   <!-- SCENE 1 — KAPAK -->
-  <div class="sb" id="s1" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-ts="1" data-scene="scene1" data-title="CASE FILE #1995-08-23">
+  <div class="sb" id="s1" data-ts="1" data-scene="scene1" data-title="CASE FILE #1995-08-23">
     <img src="scenes/scene1.jpg" alt="THE GHOST — Case File #1995-08-23 | Babajan Movlyanov | Alanya, Turkey | Status: ACTIVE" loading="eager"/>
     <button class="sg" onclick="glbOpen('scene1',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -222,7 +222,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 2 — MAGDANLY -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene2" data-title="ORIGIN: MAGDANLY">
+  <div class="sb" data-scene="scene2" data-title="ORIGIN: MAGDANLY">
     <img src="scenes/scene2.jpg" alt="Origin: Magdanly, Turkmenistan — Born 23 Aug 1995 — Coal &amp; cotton town, edge of the desert" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene2',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -230,7 +230,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 3 — SCHOOL NO.5 -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene3" data-title="SCHOOL NO. 5 · 2002–2012">
+  <div class="sb" data-scene="scene3" data-title="SCHOOL NO. 5 · 2002–2012">
     <img src="scenes/scene3.jpg" alt="School No.5 — 2002–2012 — Ten years, same walls — Graduated May 25, 2012" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene3',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -238,7 +238,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 4 — TURKEY YEARS -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene4" data-title="CLASSIFIED: TURKEY 2014–2021">
+  <div class="sb" data-scene="scene4" data-title="CLASSIFIED: TURKEY 2014–2021">
     <img src="scenes/scene4.jpg" alt="CLASSIFIED — Sakarya University 2016–2021 — 3 years undocumented — Mission complete 29.09.2021" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene4',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -246,7 +246,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 5 — DUBAI -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene5" data-title="DUBAI OPERATIONS 2021–2025">
+  <div class="sb" data-scene="scene5" data-title="DUBAI OPERATIONS 2021–2025">
     <img src="scenes/scene5.jpg" alt="Dubai Operations 2021–2025 — Ghost spotted in UAE — 4 years untracked" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene5',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -254,7 +254,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 6 — TRAVELS -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene6" data-title="FIELD OPERATIONS · 5 COUNTRIES">
+  <div class="sb" data-scene="scene6" data-title="FIELD OPERATIONS · 5 COUNTRIES">
     <img src="scenes/scene6.jpg" alt="Travels — 5 Countries, 18 Cities — Always moving, never settling" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene6',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -262,7 +262,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 7 — THE MIND -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene7" data-title="PSYCHOLOGICAL PROFILE · TOP SECRET">
+  <div class="sb" data-scene="scene7" data-title="PSYCHOLOGICAL PROFILE · TOP SECRET">
     <img src="scenes/scene7.jpg" alt="Top Secret Psychological Profile — Bitcoin futures since 2017 — Vibe coding 2AM — Books before screens" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene7',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -270,7 +270,7 @@ body.glitch{animation:glitch .6s linear}
   </div>
 
   <!-- SCENE 8 — FINAL -->
-  <div class="sb" onclick="if(!event.target.closest('button,.sc-panel'))lbOpen(this)" data-scene="scene8" data-title="STATUS: ACTIVE · ALANYA">
+  <div class="sb" data-scene="scene8" data-title="STATUS: ACTIVE · ALANYA">
     <img src="scenes/scene8.jpg" alt="Case File Closed — But The Ghost Never Stops — Current Location: Alanya, Turkey" loading="lazy"/>
     <button class="sg" onclick="glbOpen('scene8',event)">&#8862; PHOTOS</button>
     <button class="sc-btn" onclick="holoOpen(this,event)">&#9670; INFO</button>
@@ -403,16 +403,14 @@ LBW.addEventListener('touchmove',e=>{
   }
 },{passive:true});
 
-/* tap to open on touch — scroll threshold fix */
-document.querySelectorAll('.sb').forEach(sb=>{
-  let tY=0,tOk=false;
-  sb.addEventListener('touchstart',e=>{
-    if(e.target.closest('button,.sc-panel')){tOk=false;return;}
-    tOk=true;tY=e.touches[0].clientY;
-  },{passive:true});
-  sb.addEventListener('touchend',e=>{
-    if(!tOk)return;tOk=false;
-    if(e.changedTouches.length===1&&Math.abs(e.changedTouches[0].clientY-tY)<10)lbOpen(sb);
+/* sahne görseline tıklama/dokunma → lightbox (buton çakışması yok) */
+document.querySelectorAll('.sb img').forEach(img=>{
+  let tY=0;
+  img.addEventListener('click',()=>lbOpen(img.closest('.sb')));
+  img.addEventListener('touchstart',e=>{tY=e.touches[0].clientY},{passive:true});
+  img.addEventListener('touchend',e=>{
+    if(e.changedTouches.length===1&&Math.abs(e.changedTouches[0].clientY-tY)<10)
+      lbOpen(img.closest('.sb'));
   },{passive:true});
 });
 

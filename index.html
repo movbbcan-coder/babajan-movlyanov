@@ -33,10 +33,10 @@ body{
   gap:6px;
   padding:9px 16px;
   padding-bottom:max(9px,env(safe-area-inset-bottom));
-  background:rgba(6,4,4,0.84);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+  background:rgba(6,4,4,0.93);
   border-top:1px solid rgba(255,255,255,0.07);
+  transform:translateZ(0);
+  will-change:transform;
 }
 #lang-bar::before{
   content:'FILE VIEW:';
@@ -74,6 +74,11 @@ body{
   position:relative;
   width:100%;
   overflow:hidden;
+  contain:layout style;
+  content-visibility:auto;
+}
+.scene:first-child{
+  content-visibility:visible;
 }
 .scene-bg{
   display:block;
@@ -137,6 +142,7 @@ body.lang-ru .hotspot-note:hover{
 .hotspot-info[data-info-type="whatsapp"]{animation:p-wa 2.8s ease-in-out infinite}
 .hotspot-info[data-info-type="instagram"]{animation:p-ig 2.8s ease-in-out infinite}
 .hotspot-info[data-info-type="gmail"]{animation:p-gm 2.8s ease-in-out infinite}
+body.scrolling .hotspot-info{animation-play-state:paused}
 
 @keyframes p-wa{
   0%,100%{box-shadow:0 0 0 1px rgba(37,211,102,.18)}
@@ -485,6 +491,14 @@ function closeNote() {
   activeNote.card.remove();
   activeNote = null;
 }
+
+// Pause animations during scroll to reduce jank
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  document.body.classList.add('scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => document.body.classList.remove('scrolling'), 150);
+}, { passive: true });
 
 // Scene background tap closes note
 document.addEventListener('click', e => {

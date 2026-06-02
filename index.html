@@ -29,10 +29,13 @@ body.ch #cursor-ring{width:48px;height:48px;border-color:#e74c3c}
 #lamp{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:left .5s ease,top .5s ease}
 
 /* ── LANG ── */
-#lang{position:fixed;top:16px;right:16px;z-index:1000;display:flex;gap:5px}
-.lb{padding:5px 12px;font-family:'Special Elite',cursive;font-size:.7rem;letter-spacing:2px;border:1px solid rgba(192,57,43,.4);background:rgba(10,8,6,.9);color:#6b5a3e;cursor:pointer;transition:all .2s;backdrop-filter:blur(4px)}
-.lb.on{background:#c0392b;color:#fff;border-color:#c0392b;box-shadow:0 0 10px rgba(192,57,43,.4)}
-.lb:hover:not(.on){color:#f5f0e8;border-color:#e74c3c}
+#lang{position:fixed;top:16px;right:16px;z-index:1000;display:flex;gap:4px;flex-direction:column;align-items:flex-end}
+#lang-btns{display:flex;gap:5px}
+.lb{padding:5px 12px;font-family:'Special Elite',cursive;font-size:.7rem;letter-spacing:2px;border:1px solid rgba(192,57,43,.18);background:rgba(255,255,255,.04);color:rgba(245,240,232,.3);cursor:pointer;transition:all .25s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lb.on{background:rgba(192,57,43,.18);color:rgba(245,240,232,.85);border-color:rgba(192,57,43,.45);box-shadow:0 0 10px rgba(192,57,43,.2)}
+.lb:hover:not(.on){color:rgba(245,240,232,.65);border-color:rgba(231,76,60,.3);background:rgba(255,255,255,.07)}
+#lang-hint{font-family:'Special Elite',cursive;font-size:.68rem;color:rgba(201,168,76,.9);letter-spacing:.5px;transform:rotate(-2deg);pointer-events:none;white-space:nowrap;animation:hint-fade 3s ease-in-out infinite;text-shadow:0 1px 8px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.8)}
+@keyframes hint-fade{0%,100%{opacity:.45}50%{opacity:1}}
 
 /* ── MAIN BOARD ── */
 #board{display:block;background:#0a0806;position:relative;z-index:2}
@@ -155,9 +158,12 @@ body.glitch{animation:glitch .6s linear}
 <div id="lamp"></div>
 
 <div id="lang">
-  <button class="lb on" onclick="setLang('en')">EN</button>
-  <button class="lb" onclick="setLang('tr')">TR</button>
-  <button class="lb" onclick="setLang('ru')">RU</button>
+  <div id="lang-btns">
+    <button class="lb on" onclick="setLang('en')">EN</button>
+    <button class="lb" onclick="setLang('tr')">TR</button>
+    <button class="lb" onclick="setLang('ru')">RU</button>
+  </div>
+  <div id="lang-hint">tap to read in your language ↑</div>
 </div>
 
 <!-- EASTER EGG ELEMENTS -->
@@ -315,7 +321,7 @@ document.addEventListener('mousemove',e=>{
   resetIdle();
 },{passive:true});
 (function loop(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;RING.style.left=rx+'px';RING.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('button,.sb,.cn-s,.lb').forEach(el=>{
+document.querySelectorAll('button,.sb,.cn-s,#lang-btns .lb').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
 });
@@ -333,8 +339,8 @@ function setLang(l){
     const v=el.getAttribute('data-'+l);
     if(v)el.innerHTML=v;
   });
-  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
-  document.querySelector('.lb[onclick="setLang(\''+l+'\')"]').classList.add('on');
+  document.querySelectorAll('#lang-btns .lb').forEach(b=>b.classList.remove('on'));
+  document.querySelector('#lang-btns .lb[onclick="setLang(\''+l+'\')"]').classList.add('on');
   document.documentElement.lang=l;
   localStorage.setItem('ghost_lang',l);
   // refresh any open caption panels
@@ -403,14 +409,15 @@ LBW.addEventListener('touchmove',e=>{
   }
 },{passive:true});
 
-/* sahne görseline tıklama/dokunma → lightbox (buton çakışması yok) */
+/* sahne görseline tıklama → o sahnein fotoğraf galerisini aç */
 document.querySelectorAll('.sb img').forEach(img=>{
   let tY=0;
-  img.addEventListener('click',()=>lbOpen(img.closest('.sb')));
+  const sceneId=img.closest('.sb').getAttribute('data-scene');
+  img.addEventListener('click',()=>{if(sceneId)glbOpen(sceneId,null);});
   img.addEventListener('touchstart',e=>{tY=e.touches[0].clientY},{passive:true});
   img.addEventListener('touchend',e=>{
     if(e.changedTouches.length===1&&Math.abs(e.changedTouches[0].clientY-tY)<10)
-      lbOpen(img.closest('.sb'));
+      if(sceneId)glbOpen(sceneId,null);
   },{passive:true});
 });
 

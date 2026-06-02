@@ -1,0 +1,111 @@
+{
+  "scene": 2,
+  "bg_image": "scenes/scene2.jpg",
+  "title_en": "Origin — Magdanly, Turkmenistan",
+  "hotspots": [
+    {
+      "id": "photo_downtown",
+      "type": "photo",
+      "src": "s2_magdanly_1.jpg",
+      "x_pct": 14,
+      "y_pct": 13,
+      "w_pct": 60,
+      "h_pct": 30
+    },
+    {
+      "id": "photo_school",
+      "type": "photo",
+      "src": "s2_magdanly_3.jpg",
+      "x_pct": 3,
+      "y_pct": 48,
+      "w_pct": 55,
+      "h_pct": 26
+    },
+    {
+      "id": "photo_city",
+      "type": "photo",
+      "src": "s2_magdanly_1.jpg",
+      "x_pct": 3,
+      "y_pct": 73,
+      "w_pct": 42,
+      "h_pct": 20
+    },
+    {
+      "id": "note_casefile",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 2,
+      "w_pct": 33,
+      "h_pct": 12,
+      "en_text": "CASE FILE ORIGIN: MAGDANLY",
+      "tr_text": "DOSYA KÖKENİ: MAGDANLI",
+      "ru_text": "ДЕЛО — ПРОИСХОЖДЕНИЕ: МАГДАНЛЫ"
+    },
+    {
+      "id": "note_first_appearance",
+      "type": "note",
+      "x_pct": 62,
+      "y_pct": 4,
+      "w_pct": 35,
+      "h_pct": 10,
+      "en_text": "Where The Ghost first appeared",
+      "tr_text": "Hayalet'in ilk ortaya çıktığı yer",
+      "ru_text": "Место первого появления Призрака"
+    },
+    {
+      "id": "note_born",
+      "type": "note",
+      "x_pct": 63,
+      "y_pct": 38,
+      "w_pct": 34,
+      "h_pct": 10,
+      "en_text": "Born here: 23 AUG 1995",
+      "tr_text": "Doğum yeri: 23 AĞU 1995",
+      "ru_text": "Родился здесь: 23 АВГ 1995"
+    },
+    {
+      "id": "note_amu_darya",
+      "type": "note",
+      "x_pct": 62,
+      "y_pct": 50,
+      "w_pct": 35,
+      "h_pct": 10,
+      "en_text": "Amu Darya region, Lebap",
+      "tr_text": "Amu Derya bölgesi, Lebap",
+      "ru_text": "Амударьинский район, Лебап"
+    },
+    {
+      "id": "note_city_limits",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 76,
+      "w_pct": 42,
+      "h_pct": 10,
+      "en_text": "CITY LIMITS — Where The Ghost first appeared",
+      "tr_text": "ŞEHİR SINIRI — Hayalet'in ilk göründüğü yer",
+      "ru_text": "ГРАНИЦА ГОРОДА — Первое появление Призрака"
+    },
+    {
+      "id": "note_population",
+      "type": "note",
+      "x_pct": 52,
+      "y_pct": 87,
+      "w_pct": 44,
+      "h_pct": 10,
+      "en_text": "Population: working class, mining town",
+      "tr_text": "Nüfus: işçi sınıfı, madenci kenti",
+      "ru_text": "Население: рабочий класс, шахтёрский город"
+    },
+    {
+      "id": "note_downtown_caption",
+      "type": "note",
+      "x_pct": 14,
+      "y_pct": 42,
+      "w_pct": 55,
+      "h_pct": 6,
+      "en_text": "DOWNTOWN — 1990s",
+      "tr_text": "ŞEHİR MERKEZİ — 1990'lar",
+      "ru_text": "ЦЕНТР ГОРОДА — 1990-е годы"
+    }
+  ]
+}

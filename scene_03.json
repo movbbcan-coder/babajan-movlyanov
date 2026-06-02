@@ -1,0 +1,71 @@
+{
+  "scene": 3,
+  "bg_image": "scenes/scene3.jpg",
+  "title_en": "School No.5 — Origin File",
+  "hotspots": [
+    {
+      "id": "photo_school_group",
+      "type": "photo",
+      "src": "s3_school_new.webp",
+      "x_pct": 3,
+      "y_pct": 11,
+      "w_pct": 92,
+      "h_pct": 43
+    },
+    {
+      "id": "note_origin_file",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 56,
+      "w_pct": 30,
+      "h_pct": 12,
+      "en_text": "ORIGIN FILE\n— School No.5",
+      "tr_text": "KAYNAK DOSYA\n— Okul No.5",
+      "ru_text": "ИСХОДНОЕ ДЕЛО\n— Школа №5"
+    },
+    {
+      "id": "note_ten_years",
+      "type": "note",
+      "x_pct": 24,
+      "y_pct": 62,
+      "w_pct": 28,
+      "h_pct": 16,
+      "en_text": "2002-2012:\nTen years,\nsame walls",
+      "tr_text": "2002-2012:\nOn yıl,\naynı duvarlar",
+      "ru_text": "2002-2012:\nДесять лет,\nte же стены"
+    },
+    {
+      "id": "note_languages",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 70,
+      "w_pct": 28,
+      "h_pct": 14,
+      "en_text": "Languages absorbed:\nTurkmen, Russian",
+      "tr_text": "Öğrenilen diller:\nTürkmen, Rusça",
+      "ru_text": "Усвоенные языки:\nТуркменский, Русский"
+    },
+    {
+      "id": "note_graduated",
+      "type": "note",
+      "x_pct": 34,
+      "y_pct": 77,
+      "w_pct": 28,
+      "h_pct": 10,
+      "en_text": "MAY 25, 2012:\nGraduated",
+      "tr_text": "25 MAYIS 2012:\nMezun oldu",
+      "ru_text": "25 МАЯ 2012:\nОкончил школу"
+    },
+    {
+      "id": "note_crossed_border",
+      "type": "note",
+      "x_pct": 65,
+      "y_pct": 77,
+      "w_pct": 32,
+      "h_pct": 12,
+      "en_text": "AUG 2013:\nCrossed border\nto Turkey",
+      "tr_text": "AĞU 2013:\nTürkiye'ye\ngeçti",
+      "ru_text": "АВГ 2013:\nПересёк границу\nв Турцию"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "scene": 7,
+  "bg_image": "scenes/scene7.jpg",
+  "title_en": "Intelligence Gathering — Psychological Profile",
+  "hotspots": [
+    {
+      "id": "photo_neon_market",
+      "type": "photo",
+      "src": "s7_mind_4.jpg",
+      "x_pct": 2,
+      "y_pct": 5,
+      "w_pct": 47,
+      "h_pct": 32
+    },
+    {
+      "id": "photo_library",
+      "type": "photo",
+      "src": "s7_mind_4.jpg",
+      "x_pct": 2,
+      "y_pct": 48,
+      "w_pct": 42,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_trading_desk",
+      "type": "photo",
+      "src": "s7_mind_4.jpg",
+      "x_pct": 52,
+      "y_pct": 48,
+      "w_pct": 43,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_nocturnal",
+      "type": "photo",
+      "src": "s7_mind_4.jpg",
+      "x_pct": 52,
+      "y_pct": 72,
+      "w_pct": 43,
+      "h_pct": 22
+    },
+    {
+      "id": "note_never_walks",
+      "type": "note",
+      "x_pct": 50,
+      "y_pct": 4,
+      "w_pct": 45,
+      "h_pct": 10,
+      "en_text": "NEVER WALKS\nWITHOUT MUSIC",
+      "tr_text": "MÜZİKSİZ\nHİÇ YÜRÜMEZ",
+      "ru_text": "НИКОГДА НЕ ХОДИТ\nБЕЗ МУЗЫКИ"
+    },
+    {
+      "id": "note_crypto",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 37,
+      "w_pct": 45,
+      "h_pct": 10,
+      "en_text": "THE OBSESSION:\nBitcoin futures since 2017.\nLast count of losses: Still can't.",
+      "tr_text": "TAKIM:\nBitcoin vadeli işlemleri 2017'den beri.\nKayıp sayısı: Hâlâ saymakta.",
+      "ru_text": "ОДЕРЖИМОСТЬ:\nФьючерсы Bitcoin с 2017 года.\nПодсчёт убытков: всё ещё не может."
+    },
+    {
+      "id": "note_dinner_table",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 47,
+      "w_pct": 44,
+      "h_pct": 8,
+      "en_text": "Dinner Table:\nStock Operator",
+      "tr_text": "Yemek Masası:\nBorsa Operatörü",
+      "ru_text": "За обеденным столом:\nОператор акций"
+    },
+    {
+      "id": "note_library",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 76,
+      "w_pct": 44,
+      "h_pct": 9,
+      "en_text": "THE LIBRARY — ISTANBUL\nBooks before screens. Always.",
+      "tr_text": "KÜTÜPHANESİ — İSTANBUL\nEkranlardan önce kitaplar. Her zaman.",
+      "ru_text": "БИБЛИОТЕКА — СТАМБУЛ\nКниги прежде экранов. Всегда."
+    },
+    {
+      "id": "note_intelligence",
+      "type": "note",
+      "x_pct": 52,
+      "y_pct": 37,
+      "w_pct": 44,
+      "h_pct": 14,
+      "en_text": "INTELLIGENCE GATHERING:\nSun Tzu, Kahneman,\nRobert Kiyosaki,\nActive since 2 AM — tracking the trading world",
+      "tr_text": "BİLGİ TOPLAMA:\nSun Tzu, Kahneman,\nRobert Kiyosaki,\nSabah 2'den beri aktif — ticaret dünyasını takip ediyor",
+      "ru_text": "СБОР РАЗВЕДДАННЫХ:\nСунь Цзы, Канеман,\nРоберт Кийосаки,\nАктивен с 2 ночи — следит за торговым миром"
+    },
+    {
+      "id": "note_psych_profile",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 86,
+      "w_pct": 52,
+      "h_pct": 9,
+      "en_text": "TOP SECRET\nPSYCHOLOGICAL PROFILE",
+      "tr_text": "ÇOK GİZLİ\nPSİKOLOJİK PROFİL",
+      "ru_text": "СОВЕРШЕННО СЕКРЕТНО\nПСИХОЛОГИЧЕСКИЙ ПРОФИЛЬ"
+    },
+    {
+      "id": "note_chess_player",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 77,
+      "w_pct": 44,
+      "h_pct": 10,
+      "en_text": "Chess player\nDreams of world travel\nWith family",
+      "tr_text": "Satranç oyuncusu\nAileyle dünyayı\ngezmeyi hayal ediyor",
+      "ru_text": "Шахматист\nМечтает о путешествии\nпо миру с семьёй"
+    },
+    {
+      "id": "note_active_midnight",
+      "type": "note",
+      "x_pct": 52,
+      "y_pct": 72,
+      "w_pct": 44,
+      "h_pct": 12,
+      "en_text": "NOCTURNAL OPERATIONS:\nActive after midnight.\nIdeas error when the world sleeps.",
+      "tr_text": "GECE OPERASYONLARI:\nGece yarısından sonra aktif.\nDünya uyurken fikirler akar.",
+      "ru_text": "НОЧНЫЕ ОПЕРАЦИИ:\nАктивен после полуночи.\nИдеи текут, пока мир спит."
+    }
+  ]
+}

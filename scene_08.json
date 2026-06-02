@@ -1,0 +1,110 @@
+{
+  "scene": 8,
+  "bg_image": "scenes/scene8.jpg",
+  "title_en": "Current Location — Alanya, Turkey",
+  "hotspots": [
+    {
+      "id": "photo_alanya_landscape",
+      "type": "photo",
+      "src": "s8_alanya_1.jpg",
+      "x_pct": 52,
+      "y_pct": 3,
+      "w_pct": 45,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_babajan_alanya",
+      "type": "photo",
+      "src": "s8_alanya_2.jpg",
+      "x_pct": 3,
+      "y_pct": 58,
+      "w_pct": 40,
+      "h_pct": 27
+    },
+    {
+      "id": "note_current_location",
+      "type": "note",
+      "x_pct": 3,
+      "y_pct": 3,
+      "w_pct": 48,
+      "h_pct": 10,
+      "en_text": "CURRENT LOCATION —\nALANYA, TURKEY 🇹🇷",
+      "tr_text": "MEVCUT KONUM —\nALANYA, TÜRKİYE 🇹🇷",
+      "ru_text": "ТЕКУЩЕЕ МЕСТОПОЛОЖЕНИЕ —\nАЛАНИЯ, ТУРЦИЯ 🇹🇷"
+    },
+    {
+      "id": "note_ghost_found",
+      "type": "note",
+      "x_pct": 63,
+      "y_pct": 31,
+      "w_pct": 34,
+      "h_pct": 10,
+      "en_text": "The Ghost found.\nFor now.",
+      "tr_text": "Hayalet bulundu.\nŞimdilik.",
+      "ru_text": "Призрак найден.\nПока что."
+    },
+    {
+      "id": "note_hideout",
+      "type": "note",
+      "x_pct": 3,
+      "y_pct": 13,
+      "w_pct": 45,
+      "h_pct": 8,
+      "en_text": "Club Kazilanpa\nHoliday Village — Kimalik",
+      "tr_text": "Kulüp Kazilanpa\nTatil Köyü — Kimalik",
+      "ru_text": "Клуб Казиланпа\nКурортная деревня — Кималик"
+    },
+    {
+      "id": "note_case_summary",
+      "type": "note",
+      "x_pct": 45,
+      "y_pct": 44,
+      "w_pct": 52,
+      "h_pct": 28,
+      "en_text": "CASE SUMMARY:\nBorn: Magdanly, Turkmenistan — 1995\nLanguages: 4. Cities: 19.\nCareers: Hotel, Design, Admin, Real Estate, Education\nSakarya University, Admin & Economics\nStatus: Still moving, Alanya, Turkey.",
+      "tr_text": "DOSYA ÖZETİ:\nDoğum: Magdanlı, Türkmenistan — 1995\nDil: 4. Şehir: 19.\nKariyerler: Otel, Tasarım, Yönetim, Gayrimenkul, Eğitim\nSakarya Üniversitesi, İşletme & İktisat\nDurum: Hâlâ hareket halinde, Alanya, Türkiye.",
+      "ru_text": "ИТОГИ ДЕЛА:\nРодился: Магданлы, Туркменистан — 1995\nЯзыки: 4. Городов: 19.\nКарьеры: Отель, Дизайн, Администрация, Недвижимость, Образование\nУниверситет Сакарьи, Управление и Экономика\nСтатус: Всё ещё в движении, Алания, Турция."
+    },
+    {
+      "id": "note_last_hideout",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 85,
+      "w_pct": 42,
+      "h_pct": 10,
+      "en_text": "LAST KNOWN HIDEOUT —\nHATTA, UAE\nBefore returning to Turkey",
+      "tr_text": "SON BİLİNEN SAKLANMA YERİ —\nHATTA, BAE\nTürkiye'ye dönmeden önce",
+      "ru_text": "ПОСЛЕДНЕЕ ИЗВЕСТНОЕ УБЕЖИЩЕ —\nХАТТА, ОАЭ\nПеред возвращением в Турцию"
+    },
+    {
+      "id": "info_whatsapp",
+      "type": "info",
+      "info_type": "whatsapp",
+      "url": "https://wa.me/905596872223",
+      "x_pct": 45,
+      "y_pct": 76,
+      "w_pct": 30,
+      "h_pct": 8
+    },
+    {
+      "id": "info_instagram",
+      "type": "info",
+      "info_type": "instagram",
+      "url": "https://instagram.com/m.vn.bb",
+      "x_pct": 45,
+      "y_pct": 84,
+      "w_pct": 30,
+      "h_pct": 6
+    },
+    {
+      "id": "info_gmail",
+      "type": "info",
+      "info_type": "gmail",
+      "url": "mailto:movbbcan@gmail.com",
+      "x_pct": 45,
+      "y_pct": 90,
+      "w_pct": 40,
+      "h_pct": 6
+    }
+  ]
+}

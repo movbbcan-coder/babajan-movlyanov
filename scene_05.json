@@ -1,0 +1,118 @@
+{
+  "scene": 5,
+  "bg_image": "scenes/scene5.jpg",
+  "title_en": "Dubai Operations 2009-2017",
+  "hotspots": [
+    {
+      "id": "photo_portrait_dubai",
+      "type": "photo",
+      "src": "s5_dubai_4.jpg",
+      "x_pct": 3,
+      "y_pct": 10,
+      "w_pct": 35,
+      "h_pct": 35
+    },
+    {
+      "id": "photo_burj",
+      "type": "photo",
+      "src": "s5_dubai_1.jpg",
+      "x_pct": 38,
+      "y_pct": 12,
+      "w_pct": 28,
+      "h_pct": 22
+    },
+    {
+      "id": "photo_desert",
+      "type": "photo",
+      "src": "s5_dubai_3.jpg",
+      "x_pct": 60,
+      "y_pct": 35,
+      "w_pct": 36,
+      "h_pct": 23
+    },
+    {
+      "id": "photo_downtown_dubai",
+      "type": "photo",
+      "src": "s5_dubai_2.jpg",
+      "x_pct": 30,
+      "y_pct": 45,
+      "w_pct": 34,
+      "h_pct": 20
+    },
+    {
+      "id": "photo_scene_dubai",
+      "type": "photo",
+      "src": "s5_dubai_1.jpg",
+      "x_pct": 60,
+      "y_pct": 57,
+      "w_pct": 36,
+      "h_pct": 22
+    },
+    {
+      "id": "note_dubai_ops",
+      "type": "note",
+      "x_pct": 55,
+      "y_pct": 4,
+      "w_pct": 42,
+      "h_pct": 10,
+      "en_text": "DUBAI OPERATIONS\n2009–2017",
+      "tr_text": "DUBAI OPERASYONLARI\n2009–2017",
+      "ru_text": "ОПЕРАЦИИ В ДУБАЕ\n2009–2017"
+    },
+    {
+      "id": "note_career1",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 46,
+      "w_pct": 28,
+      "h_pct": 12,
+      "en_text": "Career 1: Waiter\nVid. Blogger\nTelegram Admin",
+      "tr_text": "Kariyer 1: Garson\nVideo Blog\nTelegram Yöneticisi",
+      "ru_text": "Карьера 1: Официант\nВидеоблогер\nАдмин Telegram"
+    },
+    {
+      "id": "note_career2",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 59,
+      "w_pct": 28,
+      "h_pct": 10,
+      "en_text": "Career 2: Crypto\nTrader / Analyst",
+      "tr_text": "Kariyer 2: Kripto\nTrader / Analist",
+      "ru_text": "Карьера 2: Крипто\nТрейдер / Аналитик"
+    },
+    {
+      "id": "note_career3",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 69,
+      "w_pct": 28,
+      "h_pct": 10,
+      "en_text": "Career 3: Front Office\nHotel + Real Estate",
+      "tr_text": "Kariyer 3: Ön Ofis\nOtel + Gayrimenkul",
+      "ru_text": "Карьера 3: Фронт-офис\nОтель + Недвижимость"
+    },
+    {
+      "id": "note_ghost_spotted",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 80,
+      "w_pct": 62,
+      "h_pct": 9,
+      "en_text": "GHOST SPOTTED IN UAE — 4 YEARS UNTRACKED",
+      "tr_text": "HAYALET BAE'DE GÖRÜLDÜ — 4 YIL TAKİP DIŞI",
+      "ru_text": "ПРИЗРАК ЗАМЕЧЕН В ОАЭ — 4 ГОДА БЕЗ СЛЕЖКИ"
+    },
+    {
+      "id": "note_speaks",
+      "type": "note",
+      "x_pct": 65,
+      "y_pct": 5,
+      "w_pct": 32,
+      "h_pct": 10,
+      "en_text": "Speaks Russian,\nTurkish,\nEnglish — all fluent",
+      "tr_text": "Rusça, Türkçe,\nİngilizce konuşur —\nhepsi akıcı",
+      "ru_text": "Говорит на русском,\nтурецком, английском —\nвсе свободно"
+    }
+  ]
+}

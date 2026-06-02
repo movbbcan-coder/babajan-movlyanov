@@ -1,0 +1,54 @@
+{
+  "scene": 4,
+  "bg_image": "scenes/scene4.jpg",
+  "title_en": "Classified — Sakarya University",
+  "hotspots": [
+    {
+      "id": "photo_sakarya_uni",
+      "type": "photo",
+      "src": "s4_turkey_1.jpg",
+      "x_pct": 12,
+      "y_pct": 8,
+      "w_pct": 46,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_winters",
+      "type": "photo",
+      "src": "s4_turkey_2.jpg",
+      "x_pct": 58,
+      "y_pct": 10,
+      "w_pct": 37,
+      "h_pct": 24
+    },
+    {
+      "id": "photo_pandemic",
+      "type": "photo",
+      "src": "s4_turkey_2.jpg",
+      "x_pct": 5,
+      "y_pct": 53,
+      "w_pct": 40,
+      "h_pct": 27
+    },
+    {
+      "id": "photo_diploma",
+      "type": "photo",
+      "src": "s4_diploma.jpg",
+      "x_pct": 52,
+      "y_pct": 65,
+      "w_pct": 42,
+      "h_pct": 25
+    },
+    {
+      "id": "note_undocumented",
+      "type": "note",
+      "x_pct": 20,
+      "y_pct": 37,
+      "w_pct": 55,
+      "h_pct": 16,
+      "en_text": "UNDOCUMENTED FOR 3 YEARS\nRented his own ID number at police checkpoints.\nCafés, Restaurants, Pubs. Distance learning. Still graduated.",
+      "tr_text": "3 YIL BELGESIZ\nPolis kontrol noktalarında kendi kimlik numarasını kiraladı.\nKafeler, Restoranlar, Barlar. Uzaktan eğitim. Yine de mezun oldu.",
+      "ru_text": "3 ГОДА БЕЗ ДОКУМЕНТОВ\nАрендовал собственный номер удостоверения на КПП.\nКафе, рестораны, бары. Дистанционное обучение. Всё равно окончил."
+    }
+  ]
+}

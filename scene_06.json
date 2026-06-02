@@ -1,0 +1,96 @@
+{
+  "scene": 6,
+  "bg_image": "scenes/scene6.jpg",
+  "title_en": "5 Countries — 19 Cities",
+  "hotspots": [
+    {
+      "id": "photo_bukhara",
+      "type": "photo",
+      "src": "s6_travel_4.jpg",
+      "x_pct": 2,
+      "y_pct": 34,
+      "w_pct": 32,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_istanbul",
+      "type": "photo",
+      "src": "s6_travel_3.jpg",
+      "x_pct": 55,
+      "y_pct": 35,
+      "w_pct": 40,
+      "h_pct": 28
+    },
+    {
+      "id": "photo_global_village",
+      "type": "photo",
+      "src": "s6_travel_2.jpg",
+      "x_pct": 2,
+      "y_pct": 63,
+      "w_pct": 38,
+      "h_pct": 26
+    },
+    {
+      "id": "photo_somewhere",
+      "type": "photo",
+      "src": "s6_travel_4.jpg",
+      "x_pct": 55,
+      "y_pct": 63,
+      "w_pct": 40,
+      "h_pct": 25
+    },
+    {
+      "id": "photo_unknown",
+      "type": "photo",
+      "src": "s6_travel_3.jpg",
+      "x_pct": 30,
+      "y_pct": 48,
+      "w_pct": 28,
+      "h_pct": 18
+    },
+    {
+      "id": "note_5countries",
+      "type": "note",
+      "x_pct": 60,
+      "y_pct": 20,
+      "w_pct": 37,
+      "h_pct": 14,
+      "en_text": "5 COUNTRIES\n19 CITIES",
+      "tr_text": "5 ÜLKE\n19 ŞEHİR",
+      "ru_text": "5 СТРАН\n19 ГОРОДОВ"
+    },
+    {
+      "id": "note_bukhara_label",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 62,
+      "w_pct": 35,
+      "h_pct": 8,
+      "en_text": "BUKHARA — UZBEKISTAN\nWay from home — it's still going",
+      "tr_text": "BUHARA — ÖZBEKİSTAN\nEvden uzakta — hâlâ devam ediyor",
+      "ru_text": "БУХАРА — УЗБЕКИСТАН\nПуть из дома — всё ещё продолжается"
+    },
+    {
+      "id": "note_istanbul_label",
+      "type": "note",
+      "x_pct": 55,
+      "y_pct": 62,
+      "w_pct": 40,
+      "h_pct": 8,
+      "en_text": "GRAND BAZAAR — ISTANBUL\nThe city between two continents",
+      "tr_text": "KAPALI ÇARŞI — İSTANBUL\nİki kıta arasındaki şehir",
+      "ru_text": "ГРАНД БАЗАР — СТАМБУЛ\nГород между двумя континентами"
+    },
+    {
+      "id": "note_still_counting",
+      "type": "note",
+      "x_pct": 2,
+      "y_pct": 88,
+      "w_pct": 35,
+      "h_pct": 8,
+      "en_text": "Still counting…\nNext destination: UNKNOWN",
+      "tr_text": "Hâlâ sayılıyor…\nSonraki durak: BİLİNMEYEN",
+      "ru_text": "Счёт продолжается…\nСледующий пункт: НЕИЗВЕСТНО"
+    }
+  ]
+}

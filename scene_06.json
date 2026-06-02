@@ -6,7 +6,7 @@
     {
       "id": "photo_bukhara",
       "type": "photo",
-      "src": "s6_travel_4.jpg",
+      "src": "bukhara.jpg",
       "x_pct": 2,
       "y_pct": 34,
       "w_pct": 32,
@@ -33,7 +33,7 @@
     {
       "id": "photo_somewhere",
       "type": "photo",
-      "src": "s6_travel_4.jpg",
+      "src": "samarkand.jpg",
       "x_pct": 55,
       "y_pct": 63,
       "w_pct": 40,

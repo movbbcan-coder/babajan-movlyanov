@@ -6,7 +6,7 @@
     {
       "id": "photo_neon_market",
       "type": "photo",
-      "src": "s7_mind_4.jpg",
+      "src": "notebook.jpg",
       "x_pct": 2,
       "y_pct": 5,
       "w_pct": 47,
@@ -15,7 +15,7 @@
     {
       "id": "photo_library",
       "type": "photo",
-      "src": "s7_mind_4.jpg",
+      "src": "library.jpg",
       "x_pct": 2,
       "y_pct": 48,
       "w_pct": 42,
@@ -24,7 +24,7 @@
     {
       "id": "photo_trading_desk",
       "type": "photo",
-      "src": "s7_mind_4.jpg",
+      "src": "trading.jpg",
       "x_pct": 52,
       "y_pct": 48,
       "w_pct": 43,
@@ -33,7 +33,7 @@
     {
       "id": "photo_nocturnal",
       "type": "photo",
-      "src": "s7_mind_4.jpg",
+      "src": "reading.jpg",
       "x_pct": 52,
       "y_pct": 72,
       "w_pct": 43,

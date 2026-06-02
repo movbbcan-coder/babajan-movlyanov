@@ -15,7 +15,7 @@
     {
       "id": "photo_winters",
       "type": "photo",
-      "src": "s4_turkey_2.jpg",
+      "src": "winter.jpg",
       "x_pct": 58,
       "y_pct": 10,
       "w_pct": 37,
@@ -24,7 +24,7 @@
     {
       "id": "photo_pandemic",
       "type": "photo",
-      "src": "s4_turkey_2.jpg",
+      "src": "covid.jpg",
       "x_pct": 5,
       "y_pct": 53,
       "w_pct": 40,

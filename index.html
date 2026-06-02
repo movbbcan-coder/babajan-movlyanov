@@ -99,7 +99,7 @@ body{
   background:transparent;
   border:none;
   -webkit-tap-highlight-color:transparent;
-  touch-action:none;
+  touch-action:pan-y;
   border-radius:2px;
 }
 
@@ -159,10 +159,10 @@ body.scrolling .hotspot-info{animation-play-state:paused}
 
 /* ── NOTE OVERLAY ──────────────────────────────────── */
 .note-dim{
-  position:absolute;
+  position:fixed;
   inset:0;
   background:rgba(0,0,0,0.15);
-  z-index:20;
+  z-index:29;
   touch-action:auto;
 }
 .hotspot-note.focused{
@@ -177,9 +177,8 @@ body.scrolling .hotspot-info{animation-play-state:paused}
   position:absolute;
   z-index:30;
   padding:10px 13px;
-  min-width:55%;
   max-width:calc(100% - 4%);
-  background:rgba(0,10,28,0.93);
+  background:rgba(0,10,28,0.95);
   border:1px solid rgba(0,255,170,0.32);
   border-radius:3px;
   box-shadow:
@@ -193,13 +192,6 @@ body.scrolling .hotspot-info{animation-play-state:paused}
   white-space:pre-wrap;
   word-break:break-word;
   animation:holo-in .22s ease-out;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  background-image:repeating-linear-gradient(
-    0deg,
-    transparent,transparent 2px,
-    rgba(0,255,170,0.013) 2px,rgba(0,255,170,0.013) 4px
-  );
 }
 .note-card::before{
   content:'';
@@ -286,6 +278,29 @@ body.scrolling .hotspot-info{animation-play-state:paused}
 }
 @keyframes ld-exp{0%,100%{width:30px;opacity:.15}50%{width:70px;opacity:.45}}
 @keyframes blink{0%,100%{opacity:.3}50%{opacity:.7}}
+#scroll-hint{
+  position:absolute;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:5;
+  pointer-events:none;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  letter-spacing:3px;
+  color:rgba(255,255,255,0.5);
+  white-space:nowrap;
+  transition:opacity .5s;
+}
+#scroll-hint.hidden{opacity:0}
+#scroll-hint::after{
+  content:'↓';
+  display:block;
+  text-align:center;
+  margin-top:2px;
+  animation:hint-bob .9s ease-in-out infinite alternate;
+}
+@keyframes hint-bob{from{transform:translateY(0)}to{transform:translateY(5px)}}
 </style>
 </head>
 <body class="lang-en">
@@ -333,6 +348,8 @@ function setLang(l) {
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.lang === l)
   );
+  const hint = document.getElementById('scroll-hint');
+  if (hint) hint.textContent = { en: 'SCROLL', tr: 'KAYDIRIN', ru: 'ЛИСТАЙТЕ' }[l];
   closeNote();
   closePhoto();
 }
@@ -437,48 +454,42 @@ function activate(el) {
 function showNote(el, text) {
   closeNote();
 
-  const layer = el.closest('.hotspot-layer');
-  const scene = el.closest('.scene');
-
-  // Focus glow on the tapped note
   el.classList.add('focused');
 
-  // Very light scene dim (no blur)
+  // Full-screen dim on body
   const dim = document.createElement('div');
   dim.className = 'note-dim';
   const dismiss = (e) => { e?.preventDefault(); e?.stopPropagation(); closeNote(); };
   dim.addEventListener('click', dismiss);
-  dim.addEventListener('touchend', dismiss);
-  layer.appendChild(dim);
+  dim.addEventListener('touchend', dismiss, {passive:false});
+  document.body.appendChild(dim);
 
-  // Hologram card — same % position as hotspot
+  // Fixed card — starts hidden, positioned after measure
   const card = document.createElement('div');
   card.className = 'note-card';
-  card.style.left  = el.style.left;
-  card.style.top   = el.style.top;
-  card.style.width = el.style.width;
+  card.style.cssText = 'position:fixed;visibility:hidden;top:0;left:0;';
   card.textContent = text;
-
   card.addEventListener('click', e => e.stopPropagation());
   card.addEventListener('touchend', e => e.stopPropagation());
-  layer.appendChild(card);
+  document.body.appendChild(card);
 
-  // Viewport clamp — shift card if it overflows scene bottom or right edge
   requestAnimationFrame(() => {
-    const sh = scene.offsetHeight;
-    const sw = scene.offsetWidth;
-    const topPx  = parseFloat(el.style.top)  / 100 * sh;
-    const leftPx = parseFloat(el.style.left) / 100 * sw;
+    const rect = el.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const cw = card.offsetWidth;
+    const ch = card.offsetHeight;
 
-    const cardH = card.offsetHeight;
-    const cardW = card.offsetWidth;
+    let top  = rect.bottom + 8;
+    let left = rect.left;
 
-    if (topPx + cardH > sh * 0.98) {
-      card.style.top = Math.max(1, (sh * 0.98 - cardH) / sh * 100) + '%';
-    }
-    if (leftPx + cardW > sw * 0.99) {
-      card.style.left = Math.max(1, (sw * 0.99 - cardW) / sw * 100) + '%';
-    }
+    if (left + cw > vw - 8) left = Math.max(8, vw - cw - 8);
+    if (top + ch > vh - 64) top = Math.max(8, rect.top - ch - 8);
+
+    card.style.top = top + 'px';
+    card.style.left = left + 'px';
+    card.style.maxWidth = Math.min(vw - 16, 320) + 'px';
+    card.style.visibility = 'visible';
   });
 
   activeNote = { dim, card, el };
@@ -498,6 +509,8 @@ window.addEventListener('scroll', () => {
   document.body.classList.add('scrolling');
   clearTimeout(scrollTimer);
   scrollTimer = setTimeout(() => document.body.classList.remove('scrolling'), 150);
+  const hint = document.getElementById('scroll-hint');
+  if (hint) hint.classList.add('hidden');
 }, { passive: true });
 
 // Scene background tap closes note
@@ -570,9 +583,24 @@ document.addEventListener('keydown', e => {
     return;
   }
 
-  // Fade out loader
-  loader.style.opacity = '0';
-  setTimeout(() => loader.remove(), 520);
+  // Scroll hint on first scene
+  const hintEl = document.createElement('div');
+  hintEl.id = 'scroll-hint';
+  hintEl.textContent = { en: 'SCROLL', tr: 'KAYDIRIN', ru: 'ЛИСТАЙТЕ' }[lang];
+  main.querySelector('.scene').appendChild(hintEl);
+
+  // Fade loader after first scene image loads (prevents flicker)
+  const firstImg = main.querySelector('.scene-bg');
+  function fadeLoader() {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.remove(), 520);
+  }
+  if (!firstImg || firstImg.complete) {
+    fadeLoader();
+  } else {
+    firstImg.addEventListener('load', fadeLoader, { once: true });
+    firstImg.addEventListener('error', fadeLoader, { once: true });
+  }
 })();
 </script>
 </body>

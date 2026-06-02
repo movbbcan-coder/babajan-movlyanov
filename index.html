@@ -124,6 +124,16 @@ body.glitch{animation:glitch .6s linear}
 .sc-btn{position:absolute;bottom:10px;left:10px;z-index:20;background:rgba(10,8,6,.88);border:1px solid rgba(201,168,76,.4);color:#c9a84c;font-family:'Special Elite',cursive;font-size:.6rem;letter-spacing:2px;padding:5px 9px;cursor:pointer;transition:all .2s;backdrop-filter:blur(4px)}
 .sc-btn:hover{background:rgba(201,168,76,.15);border-color:#c9a84c}
 .sb{overflow:hidden}
+
+/* ── PHOTO HOTSPOTS ── */
+.hs-layer{position:absolute;inset:0;pointer-events:none;z-index:8}
+.hs-btn{
+  position:absolute;pointer-events:auto;background:transparent;border:none;
+  cursor:zoom-in;transition:background .18s,box-shadow .18s;
+  -webkit-tap-highlight-color:rgba(255,255,255,.12);border-radius:2px;
+}
+.hs-btn:hover{background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(201,168,76,.45),0 0 14px rgba(201,168,76,.15)}
+.hs-btn:active{background:rgba(255,255,255,.16)}
 .sc-panel{position:absolute;bottom:0;left:0;right:0;z-index:15;background:rgba(10,8,6,.93);border-top:1px solid rgba(139,105,20,.3);padding:12px 14px 14px;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
 .sc-panel.open{transform:translateY(0)}
 .sc-txt{font-family:'Special Elite',cursive;font-size:.78rem;color:#d4c9a8;line-height:1.65;letter-spacing:.4px}
@@ -632,11 +642,76 @@ function upPx(){
     const r=sb.getBoundingClientRect();
     if(r.bottom<-200||r.top>window.innerHeight+200)return;
     const p=(window.innerHeight*.5-r.top-r.height*.5)/(window.innerHeight+r.height);
-    sb.querySelector('img').style.transform=`translateY(${p*55}px)`;
+    const t=`translateY(${p*55}px)`;
+    sb.querySelector('img').style.transform=t;
+    const hl=sb.querySelector('.hs-layer');
+    if(hl)hl.style.transform=t;
   });
 }
 window.addEventListener('scroll',upPx,{passive:true});
 upPx();
+
+/* ── PHOTO HOTSPOTS ── */
+(function buildHotspots(){
+  const HS={
+    scene1:[
+      {img:'profile.jpg',  x1:12,y1:12,x2:60,y2:48},
+      {img:'suit.jpg',     x1:55,y1:55,x2:90,y2:87}
+    ],
+    scene2:[
+      {img:'street.jpg',   x1:18,y1:20,x2:73,y2:53},
+      {img:'magdanly.jpg', x1:3, y1:58,x2:42,y2:80}
+    ],
+    scene3:[
+      {img:'graduation.jpg',x1:8, y1:22,x2:90,y2:68},
+      {img:'school.jpg',   x1:4, y1:52,x2:20,y2:65}
+    ],
+    scene4:[
+      {img:'sakarya.jpg',  x1:3, y1:10,x2:40,y2:55},
+      {img:'winter.jpg',   x1:55,y1:10,x2:92,y2:55},
+      {img:'covid.jpg',    x1:3, y1:73,x2:40,y2:93},
+      {img:'hotel.jpg',    x1:55,y1:73,x2:92,y2:93}
+    ],
+    scene5:[
+      {img:'pier.jpg',     x1:28,y1:10,x2:58,y2:38},
+      {img:'burj.jpg',     x1:55,y1:15,x2:80,y2:50},
+      {img:'dubai_gv.jpg', x1:3, y1:38,x2:33,y2:72},
+      {img:'desert.jpg',   x1:28,y1:55,x2:58,y2:82},
+      {img:'hatta.jpg',    x1:58,y1:55,x2:88,y2:82}
+    ],
+    scene6:[
+      {img:'samarkand.jpg',x1:3, y1:35,x2:30,y2:73},
+      {img:'bukhara.jpg',  x1:30,y1:43,x2:65,y2:73},
+      {img:'lion.jpg',     x1:3, y1:73,x2:32,y2:90},
+      {img:'pavilion.jpg', x1:63,y1:53,x2:92,y2:80}
+    ],
+    scene7:[
+      {img:'trading.jpg',  x1:3, y1:18,x2:40,y2:48},
+      {img:'reading.jpg',  x1:50,y1:17,x2:90,y2:55},
+      {img:'library.jpg',  x1:3, y1:57,x2:42,y2:80}
+    ],
+    scene8:[
+      {img:'pier.jpg',     x1:8, y1:8, x2:85,y2:45},
+      {img:'hatta.jpg',    x1:3, y1:55,x2:48,y2:80}
+    ]
+  };
+  Object.entries(HS).forEach(([sid,spots])=>{
+    const sb=document.querySelector('[data-scene="'+sid+'"]');
+    if(!sb)return;
+    const layer=document.createElement('div');
+    layer.className='hs-layer';
+    spots.forEach(s=>{
+      const btn=document.createElement('button');
+      btn.className='hs-btn';
+      btn.style.left=s.x1+'%';btn.style.top=s.y1+'%';
+      btn.style.width=(s.x2-s.x1)+'%';btn.style.height=(s.y2-s.y1)+'%';
+      btn.addEventListener('click',e=>{e.stopPropagation();lbOpenSrc('originals/'+s.img);});
+      btn.addEventListener('touchend',e=>{e.stopPropagation();e.preventDefault();lbOpenSrc('originals/'+s.img);},{passive:false});
+      layer.appendChild(btn);
+    });
+    sb.appendChild(layer);
+  });
+})();
 
 /* ── HOLOGRAM ── */
 const HOLO=document.getElementById('holo');

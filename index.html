@@ -301,9 +301,38 @@ body.scrolling .hotspot-info{animation-play-state:paused}
   animation:hint-bob .9s ease-in-out infinite alternate;
 }
 @keyframes hint-bob{from{transform:translateY(0)}to{transform:translateY(5px)}}
+
+#mute-btn{
+  position:fixed;
+  top:12px;right:12px;
+  z-index:210;
+  background:rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:50%;
+  width:44px;height:44px;
+  cursor:pointer;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s,border-color .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+#mute-btn:hover{
+  background:rgba(0,0,0,0.8);
+  border-color:rgba(255,255,255,0.25);
+}
 </style>
 </head>
 <body class="lang-en">
+
+<!-- BGM Audio -->
+<audio id="bgm" preload="auto" loop>
+  <source src="audio/enemy_of_truth.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Mute Button -->
+<button id="mute-btn" title="Toggle Music">🔇</button>
 
 <!-- Language bar -->
 <div id="lang-bar">
@@ -337,6 +366,40 @@ body.scrolling .hotspot-info{animation-play-state:paused}
 let lang = localStorage.getItem('bab_lang') || 'en';
 let activeNote = null;
 let tsX = 0, tsY = 0, tsT = 0;
+let bgm = document.getElementById('bgm');
+let isMuted = localStorage.getItem('bab_muted') === 'true';
+let hasStartedPlaying = false;
+
+// BGM CONTROL
+function startBGM() {
+  if (hasStartedPlaying) return;
+  hasStartedPlaying = true;
+
+  if (!isMuted) {
+    bgm.play().catch(() => {
+      console.debug('Autoplay blocked, will retry on user interaction');
+    });
+  }
+  updateMuteIcon();
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  localStorage.setItem('bab_muted', isMuted);
+
+  if (isMuted) {
+    bgm.pause();
+  } else {
+    bgm.play().catch(() => console.debug('Play blocked'));
+  }
+  updateMuteIcon();
+}
+
+function updateMuteIcon() {
+  document.getElementById('mute-btn').textContent = isMuted ? '🔇' : '🔊';
+}
+
+document.getElementById('mute-btn').addEventListener('click', toggleMute);
 
 // ════════════════════════════════════════════
 // LANGUAGE SWITCHER
@@ -435,6 +498,7 @@ function wire(el) {
 }
 
 function activate(el) {
+  startBGM(); // Start BGM on first interaction
   const type = el.dataset.type;
   if (type === 'note') {
     if (lang === 'en') return; // EN: notes are decorative, no overlay
@@ -511,6 +575,9 @@ window.addEventListener('scroll', () => {
   scrollTimer = setTimeout(() => document.body.classList.remove('scrolling'), 150);
   const hint = document.getElementById('scroll-hint');
   if (hint) hint.classList.add('hidden');
+
+  // Start BGM on first scroll
+  startBGM();
 }, { passive: true });
 
 // Scene background tap closes note
@@ -594,12 +661,39 @@ document.addEventListener('keydown', e => {
   function fadeLoader() {
     loader.style.opacity = '0';
     setTimeout(() => loader.remove(), 520);
+
+    // Start BGM after loader fades (first interaction opportunity)
+    setTimeout(startBGM, 300);
   }
   if (!firstImg || firstImg.complete) {
     fadeLoader();
   } else {
     firstImg.addEventListener('load', fadeLoader, { once: true });
     firstImg.addEventListener('error', fadeLoader, { once: true });
+  }
+})();
+
+// ANALYTICS TRACKING — ziyaretçi kaydet
+(async function trackVisit() {
+  try {
+    // Client IP'sini al (API üzerinden)
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+    const ip = ipData.ip || 'unknown';
+
+    // Analytics API'ye POST
+    await fetch('http://116.203.40.200:3011/api/visit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ip: ip,
+        userAgent: navigator.userAgent,
+        referrer: document.referrer
+      })
+    });
+  } catch (err) {
+    // Sessizce hata yut — kullanıcı deneyimi bozulmasın
+    console.debug('Analytics tracking failed:', err.message);
   }
 })();
 </script>
